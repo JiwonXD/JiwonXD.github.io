@@ -253,7 +253,7 @@
           <h3><svg><use href="#i-github"/></svg>GitHub Contributions</h3>
           <p class="contrib-total" id="contrib-total">불러오는 중</p>
         </div>
-        <div class="year-tabs" id="year-tabs" role="tablist" aria-label="연도"></div>
+        <select class="year-select" id="year-select" aria-label="조회 범위" hidden></select>
       </div>
       <div class="contrib-scroll"><div class="contrib-grid" id="contrib-grid"></div></div>
       <div class="contrib-legend"><span>Less</span><i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><span>More</span></div>
@@ -479,7 +479,7 @@
     const user = 'JiwonXD';
     const grid = document.getElementById('contrib-grid');
     const total = document.getElementById('contrib-total');
-    const tabs = document.getElementById('year-tabs');
+    const sel = document.getElementById('year-select');
     const tip = document.getElementById('contrib-tip');
     let days;
     try {
@@ -518,14 +518,10 @@
       }
       const sc = grid.parentElement;
       sc.scrollLeft = sc.scrollWidth;
-      tabs.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', b.dataset.k === key));
     }
-    for (const r of ranges) {
-      const b = document.createElement('button');
-      b.type = 'button'; b.role = 'tab'; b.dataset.k = r.key; b.textContent = r.label;
-      b.addEventListener('click', () => render(r.key));
-      tabs.append(b);
-    }
+    for (const r of ranges) sel.append(new Option(r.label, r.key));
+    sel.addEventListener('change', () => render(sel.value));
+    sel.hidden = false;
     grid.addEventListener('mouseover', e => {
       const c = e.target.closest('i');
       if (!c) { tip.hidden = true; return; }
