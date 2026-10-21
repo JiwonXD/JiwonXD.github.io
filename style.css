@@ -172,3 +172,16 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
   .dated li { align-items: flex-start; }
   .modal { padding: 20px; }
 }
+
+/* 프로젝트 카드 전체 클릭 + 호버 */
+.pcard { position: relative; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
+.pcard .more::after { content: ""; position: absolute; inset: 0; border-radius: 12px; }
+.pcard .ai { position: relative; z-index: 2; }
+.pcard:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgba(26, 35, 51, .06), 0 16px 32px rgba(31, 85, 192, .16); }
+.pcard:hover .more { color: var(--blue-deep); }
+.pcard:hover .more svg { transform: translate(2px, -2px); }
+.more svg { transition: transform .2s ease; }
+.pcard .cover { transition: filter .2s ease; }
+.pcard:hover .cover { filter: brightness(1.06); }
+.pcard:has(.more:focus-visible) { outline: 2px solid var(--blue); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .pcard, .pcard:hover { transition: none; transform: none; } }
