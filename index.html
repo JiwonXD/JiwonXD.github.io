@@ -464,15 +464,6 @@
   <h4 class="mcases">문제 해결</h4>
   <div class="cases">
     <section class="case">
-      <h4>상세 페이지의 이중 집계</h4>
-      <ol class="trail">
-        <li class="s-sym"><b>증상</b><span>서버 SQL 집계와 화면 집계가 함께 존재</span></li>
-        <li class="s-no"><b>배제</b><span>"서버 집계는 초기값으로 필요"라는 주석. 반환값별 소비처 검색, 화면은 원본으로 직접 집계</span></li>
-        <li class="s-yes"><b>원인</b><span>유일한 소비자는 회귀 테스트. 테스트를 화면과 같은 계산으로 이전</span></li>
-        <li class="s-res"><b>결과</b><span><em>상세 조회 미사용 SQL 4개 → 0개</em></span></li>
-      </ol>
-    </section>
-    <section class="case">
       <h4>같은 미끼가 따로 집계됨</h4>
       <ol class="trail">
         <li class="s-sym"><b>증상</b><span>크기만 달라도 다른 미끼로 집계돼 점유율이 희석</span></li>
