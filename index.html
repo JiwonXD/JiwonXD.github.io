@@ -507,7 +507,11 @@
   });
   document.querySelectorAll('dialog').forEach(d => {
     d.querySelector('.close').addEventListener('click', () => d.close());
-    d.addEventListener('click', e => { if (e.target === d) d.close(); });
+    // 바깥(배경)에서 누르고 바깥에서 뗀 경우만 닫기. 안에서 드래그해 밖에서 떼는 경우는 유지
+    const outside = e => { const r = d.getBoundingClientRect(); return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom; };
+    let downOut = false;
+    d.addEventListener('pointerdown', e => { downOut = e.target === d && outside(e); });
+    d.addEventListener('click', e => { if (downOut && e.target === d && outside(e)) d.close(); downOut = false; });
   });
   // 오른쪽 점 내비게이션: 보이는 섹션 표시
   const dots = [...document.querySelectorAll('.dots a')];
