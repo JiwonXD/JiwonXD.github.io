@@ -70,6 +70,7 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .pill-btn:hover { background: var(--blue-deep); }
 .tags { list-style: none; padding: 0; margin: 22px auto 0; max-width: 440px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
 .tags li { font-size: 12.5px; font-weight: 600; color: var(--blue-deep); background: rgba(255, 255, 255, .6); padding: 4px 11px; border-radius: 999px; }
+.tags .br { flex-basis: 100%; height: 0; padding: 0; margin-top: -8px; background: none; }
 
 /* 지표 줄 */
 .stats { list-style: none; padding: 0; margin: -56px 0 0; position: relative; z-index: 2; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
