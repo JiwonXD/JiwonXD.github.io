@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>박지원 포트폴리오</title>
+<meta name="description" content="박지원의 프로젝트 정리. 무엇을 만들지 정하고, AI가 쓴 코드를 검증하고, 원인을 끝까지 좁힌 기록.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">신입 개발자 포트폴리오</p>
+    <h1>박지원</h1>
+    <p class="lead">무엇을 만들지 정하고, 결과가 맞는지 끝까지 확인하는 개발자입니다.<br>
+    최근 프로젝트는 코드를 AI 에이전트에게 맡기고, 저는 범위와 설계 결정, 검토, 실제 환경 검증을 맡았습니다.</p>
+    <ul class="links">
+      <li><a href="https://github.com/JiwonXD">GitHub</a></li>
+    </ul>
+  </div>
+</header>
+
+<nav class="toc" aria-label="목차">
+  <div class="wrap">
+    <a href="#projects">프로젝트</a>
+    <a href="#more">그 밖의 경험</a>
+    <a href="#skills">써 본 기술</a>
+    <a href="#edu">교육</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="how">
+  <h2>일하는 방식</h2>
+  <p class="note">AI와 함께 만든 프로젝트는 역할을 이렇게 나눴습니다. 각 프로젝트에도 같은 기준으로 적었습니다.</p>
+  <div class="split">
+    <div>
+      <h3>AI가 한 일</h3>
+      <p>코드 작성, PR, 테스트 코드, 부하 테스트 실행, 문서 초안</p>
+    </div>
+    <div>
+      <h3>제가 한 일</h3>
+      <p>만들 범위와 사양, 기술·설계 결정, AI 제안 검토와 기각, 실제 환경에서 재현과 검증, 머지 결정</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>프로젝트</h2>
+
+  <!-- AML -->
+  <article class="project">
+    <header>
+      <p class="meta">2026.08 ~ 2026.12 (진행 중) · 5인 팀 · 교육 과정 기업연계</p>
+      <h3>자금세탁 모니터링 백엔드</h3>
+      <p class="summary">여러 은행의 거래 보고를 모아 하루 단위로 분석하고, 의심 거래 묶음(Alert)을 조사 화면에 넘기는 백엔드</p>
+      <p class="role"><b>내 역할</b> 8월 모델링, 9월부터 백엔드·QA. 은행 수집, 원장, 일별 분석, API, DB, 통합 검증, Python 워커 담당. 코드는 AI가 작성하고 요구·설계·API 계약·스키마·재시도 정책 결정과 dev 서버 검증을 맡음</p>
+      <ul class="tags"><li>Java 21</li><li>Spring Boot</li><li>PostgreSQL 17</li><li>Flyway</li><li>Testcontainers</li><li>Python 워커</li><li>AWS S3</li></ul>
+    </header>
+    <details>
+      <summary>자세히 보기</summary>
+      <div class="body">
+        <h4>왜</h4>
+        <p>규칙 기반 거래 모니터링은 오탐률이 90~95%로 보고됩니다. 팀은 은행 한 곳이 아니라 여러 은행 보고를 모으는 감독기관형 구조로, Alert를 "사람이 한 패턴을 판단할 수 있는 크기"로 정의하는 데서 출발했습니다. 저에게는 첫 Java·Spring 프로젝트입니다.</p>
+
+        <h4>구조</h4>
+        <p>은행이 CSV를 올리면 Spring이 크기와 해시를 검증해 적재하고, 개인식별값은 암호화해 별도 스키마에 둡니다. 매일 한 번 통합, 입력 고정, 피처, 추론, 점수, Alert 단계를 돌리고, 각 단계는 Spring이 Python 워커를 실행합니다.</p>
+
+        <h4>막혔던 문제</h4>
+        <div class="case">
+          <p class="case-title">9일째 분석 준비가 146초에서 990초로 뛴 문제</p>
+          <ul>
+            <li>첫 가설은 Alert 수 증가였지만 같은 규모 합성 부하에서 81초로 재현되지 않아 버렸습니다.</li>
+            <li>실환경 측정에서 메모리 압박을 확인했고, 같은 측정에서 커버리지 달력이 1,144일로 나왔습니다.</li>
+            <li>AI는 커버리지 계약을 바꾸자고 했지만, 저는 프로그램이 현실의 현재 시각을 알면 안 된다고 짚었습니다. 업무 시각을 하나로 통일하고 워커는 필요한 열만 읽게 바꿨습니다.</li>
+            <li>결과: 달력 1,144일 → 5~6일, 워커 최대 메모리 2,378 → 782MiB, 7~10일째 준비 시간 76~90초로 평탄해짐. 결과가 같은지 해시로 확인</li>
+          </ul>
+        </div>
+        <div class="case">
+          <p class="case-title">Alert 하나에 핵심 거래가 4,096건 묶이던 생성기</p>
+          <ul>
+            <li>정답 패턴은 최대 32건, 95%가 11건 이하인데 생성기는 수천 건짜리 묶음을 만들었습니다.</li>
+            <li>"100건이 넘는 묶음을 한 패턴이라고 할 수 있나"를 기준으로, 큰 조직 단위 사례는 Alert를 묶은 Episode로 넘기고 핵심 상한을 64로 정했습니다. 상한값마다 근거를 요구해 외부 자료를 조사했습니다.</li>
+            <li>결과: 정상 거래만으로 된 Alert(1,000건당) 826 → 10.2, 핵심 최대 194 → 52</li>
+          </ul>
+        </div>
+        <div class="case">
+          <p class="case-title">로컬에선 빨랐는데 dev에선 30초가 넘던 조회</p>
+          <ul>
+            <li>EXPLAIN에서 추정 4행, 실제 12,424행. 새 테이블에 통계가 없어 반복 비교가 폭증하고 있었습니다.</li>
+            <li>수동 ANALYZE로 1.3초가 됐지만, 그걸 필수 절차로 두지 않고 통계 없이도 버티는 쿼리 구조로 바꾸고 분석이 끝날 때 통계를 자동 수집하게 했습니다.</li>
+            <li>결과: dev 중앙값 대시보드 1.05초, Alert 1.15초</li>
+          </ul>
+        </div>
+
+        <h4>지킨 원칙</h4>
+        <p>분석 전용 DB 계정이 개인정보 테이블에 접근하지 못하는 것을 실제 DB에서 확인했고, 평가 라벨은 별도 스키마로 분리해 생성기 입력에 쓰이지 않는지 테스트했습니다. 더미 모델 결과에는 "시연용, 탐지 성능 아님"을 표시합니다.</p>
+
+        <h4>남은 일</h4>
+        <p>실제 피처·모델 연결, 증분 Alert 생성, 대시보드 동시 부하 대응, 정식 권한 체계</p>
+      </div>
+    </details>
+  </article>
+
+  <!-- Quiz -->
+  <article class="project">
+    <header>
+      <p class="meta">2026.10 (약 8일) · 개인 · 배포 완료</p>
+      <h3>자격증 실시간 퀴즈 대전</h3>
+      <p class="summary">자격증 기출 문제를 2~4명이 실시간으로 겨루며 푸는 웹 서비스</p>
+      <p class="role"><b>내 역할</b> 기획과 결정, 클라우드 콘솔 설정, 검증, 병합. 코드는 주제별로 나눈 여러 AI 세션이 작성</p>
+      <ul class="tags"><li>Node.js</li><li>Express</li><li>Socket.IO</li><li>Supabase</li><li>Cloudflare</li><li>Vanilla JS</li></ul>
+    </header>
+    <details>
+      <summary>자세히 보기</summary>
+      <div class="body">
+        <h4>왜</h4>
+        <p>자격증 공부를 혼자 문제만 푸는 방식이 아니라, 실시간으로 매칭된 사람과 겨루면서 재미있게 하고 싶었습니다.</p>
+
+        <h4>구조</h4>
+        <p>서버 한 대가 매칭, 방, 출제, 채점, Elo 레이팅 계산을 메모리에서 처리합니다. 서버를 다시 켜면 디스크가 지워지는 무료 환경이라 전적과 로그인은 Supabase에 두었습니다.</p>
+
+        <h4>막혔던 문제</h4>
+        <div class="case">
+          <p class="case-title">측정 대상이 최신 코드가 아니었던 부하 테스트</p>
+          <ul>
+            <li>1차 측정 결과로 최적화를 하려던 참에, 그 측정이 레이팅·리더보드가 들어가기 전 코드였다는 걸 제가 짚어 다시 측정했습니다.</li>
+            <li>재측정에서 전송량의 96.6%가 방 목록 방송이었고, 순위를 낼 때마다 전체 회원을 정렬하는 새 병목도 나왔습니다.</li>
+            <li>방 목록과 접속자 수를 묶어 로비에 있는 사람에게만 보내고, 순위표는 캐시했습니다. WebSocket 압축은 CPU와 메모리가 늘어서 넣지 않았습니다.</li>
+            <li>결과: CPU 0.1·메모리 512MB로 제한한 로컬 봇 테스트에서 전송량 약 63% 감소, 1,146명에서 막히던 접속이 1,400명까지 통과. 실서비스 수치는 아닙니다.</li>
+          </ul>
+        </div>
+        <div class="case">
+          <p class="case-title">AI 추천을 질문으로 다시 검토하게 한 레이팅 설계</p>
+          <ul>
+            <li>AI는 두 대전 모드의 레이팅을 하나로 두자고 했습니다. 저는 두 모드가 다른 영역이라고 보고 근거를 다시 물었습니다.</li>
+            <li>AI가 다시 검토한 뒤 추천을 뒤집었습니다. 대기열이 이미 모드별이라 나눠도 손해가 없고, 한 모드 레이팅으로 다른 모드 상대를 잡는 문제가 생기기 때문입니다.</li>
+          </ul>
+        </div>
+        <div class="case">
+          <p class="case-title">빠지면 안 되는 코드 문제 지키기</p>
+          <ul>
+            <li>AI가 실기의 코드·SQL 문제를 이번엔 빼겠다고 하자, 실제 시험 형식대로 보여 줘야 한다고 보고 화면 구현을 바꾸게 했습니다.</li>
+            <li>코드 문제는 실제로 실행해 정답이 같은 것만 남겼고, 의심 문항과 법 개정 문항은 사유를 남기고 뺐습니다.</li>
+          </ul>
+        </div>
+
+        <h4>결과</h4>
+        <p>레이팅 매칭(2~4명), 사설 방, 객관식·단답형·코드·그림 문제, 모드별 Elo와 티어, Google·카카오 로그인, 오답노트. 18개 문제 은행 16,954문항. 실사용은 지인 몇 명 수준입니다.</p>
+
+        <h4>한계</h4>
+        <p>자동화 테스트가 없고, 재접속 복구가 없으며, 서버 한 대 메모리 구조라 수평 확장이 안 됩니다.</p>
+      </div>
+    </details>
+  </article>
+
+  <!-- Fleet -->
+  <article class="project">
+    <header>
+      <p class="meta">2026.09 ~ 2026.10 · 개인 · GitHub Pages로 운영 중</p>
+      <h3>항해 게임 선단 편성 도구와 도착 알림</h3>
+      <p class="summary">배 7척, 최대 77명의 최적 배치를 찾아 주는 도구와, 화면을 인식해 도착하면 알려 주는 브라우저 앱</p>
+      <p class="role"><b>내 역할</b> 기능 범위와 사양, 기준값, 머지 결정, 실제 플레이로 검증과 재현 자료 제공. 코드는 AI가 작성</p>
+      <ul class="tags"><li>Vanilla JS</li><li>Web Worker</li><li>Screen Capture API</li><li>OffscreenCanvas</li><li>GitHub Actions</li></ul>
+    </header>
+    <details>
+      <summary>자세히 보기</summary>
+      <div class="body">
+        <h4>왜</h4>
+        <p>사람마다 효과가 4~5개라 손으로 최적 조합을 찾기 어려웠고, 게임에 도착 알림이 없어 배를 보내 놓고 도착을 놓치는 일이 잦았습니다. 서버 없이 GitHub Pages만으로 되는지부터 확인하고 브라우저 안에서 화면을 캡처하는 방식으로 정했습니다.</p>
+
+        <h4>막혔던 문제</h4>
+        <div class="case">
+          <p class="case-title">도착 화면 오탐을 다섯 번 잡기</p>
+          <ul>
+            <li>플레이하다 오탐이 날 때마다 스크린샷으로 제보했습니다. 세계지도, 채팅, 출항 로딩창 등이 도착 화면으로 잡혔습니다.</li>
+            <li>출항 로딩창은 도착 화면과 글꼴·배치가 같아서, 임계값을 올리는 대신 닮은꼴 템플릿을 두고 그쪽 점수가 더 높으면 감점했습니다. 검사 위치도 화면 좌상단으로 제한했습니다.</li>
+            <li>창 모드·전체화면, UI 배율별 스크린샷 42장을 제공했고 기본 임계값 0.8을 정했습니다.</li>
+            <li>결과: 도착 샘플 0.83~1.00, 비도착 0.62 이하, 출항 화면 0.00. 검사 1회 30~60ms</li>
+          </ul>
+        </div>
+        <div class="case">
+          <p class="case-title">스탯 비교 기준을 도메인 지식으로 바로잡기</p>
+          <ul>
+            <li>AI는 1레벨 기본 스탯 합으로 비교하자고 했지만, 훈련을 끝내면 최종 스탯은 같아지고 한 캐릭터 안의 스탯 비율만 유지된다는 점을 근거로 거절했습니다.</li>
+            <li>땜질식으로 이동 규칙을 더하는 대신 알고리즘 단계부터 다시 설계하게 했습니다.</li>
+          </ul>
+        </div>
+        <div class="case">
+          <p class="case-title">최적해를 보장하지 않는 탐색을 어떻게 믿을지</p>
+          <ul>
+            <li>실제 배치 파일과 변형 3개를 정수계획법(MILP)으로 정확히 풀어 비교했고, 10초 탐색 결과가 4건 모두 최적값과 같았습니다.</li>
+          </ul>
+        </div>
+
+        <h4>결과</h4>
+        <p>테스트 37개, PR 14건. 캡처 영상과 설정은 브라우저에만 저장하고 서버로 보내지 않는다는 점을 화면과 README에 적었습니다.</p>
+
+        <h4>한계</h4>
+        <p>미탐 원인은 짧은 로딩 화면으로 추정만 했고, 배마다 목표가 섞인 경우는 MILP로 검증하지 않았습니다.</p>
+      </div>
+    </details>
+  </article>
+
+  <!-- Fishing -->
+  <article class="project">
+    <header>
+      <p class="meta">2026.06 ~ 2026.07 (약 7주) · 개인 · 1인 개발·운영</p>
+      <h3>낚시 게임 기록 트렌드 대시보드</h3>
+      <p class="summary">게임 속 주간 기록 데이터를 쌓아 어종별 활성도와 미끼·수역 정보를 보여 주는 웹 서비스</p>
+      <p class="role"><b>내 역할</b> 제품 범위와 설계 결정 56건 기록, 검토, 운영. 코드는 역할을 나눈 AI 에이전트(구현·검수)가 작성</p>
+      <ul class="tags"><li>Python</li><li>FastAPI</li><li>SQLite</li><li>Jinja2</li><li>RandomForest</li><li>Cloudflare Tunnel</li></ul>
+    </header>
+    <details>
+      <summary>자세히 보기</summary>
+      <div class="body">
+        <h4>왜</h4>
+        <p>잘 잡히는 지점과 미끼가 계속 바뀌는데 기록은 주간 순위 스냅샷으로만 볼 수 있었습니다. 게임에 들어가자마자 "오늘 뭐 잡으러 가지?"를 5분 안에 정하게 하는 걸 목표로 했고, 전체 기록 조회는 차별점이 없다고 보고 선호 어종 대시보드로 범위를 좁혔습니다.</p>
+
+        <h4>막혔던 문제</h4>
+        <div class="case">
+          <p class="case-title">선형 공식을 모델로 교체</p>
+          <ul>
+            <li>임시 공식은 어종마다 희귀도와 기록 규모가 달라 맞지 않았습니다. 라벨 381건을 모은 뒤 비교했습니다: 다수 클래스 33%, 로지스틱 회귀 61%, RandomForest 64%(라벨 평가 기준).</li>
+            <li>운영 기기인 안드로이드 태블릿에는 scikit-learn을 설치할 수 없어서, 트리를 JSON으로 내보내 표준 라이브러리만으로 추론할 수 있는 RandomForest를 골랐습니다.</li>
+          </ul>
+        </div>
+        <div class="case">
+          <p class="case-title">시간 필터가 먹지 않던 버그</p>
+          <ul>
+            <li>6시간/24시간 탭을 바꿔도 결과가 같았습니다. 저장 시각과 SQLite 비교의 구분자 형식이 달라 문자열 비교가 깨져 있었습니다.</li>
+            <li>쿼리에 변환을 덧씌우는 대신 저장 형식을 통일하고 과거 데이터를 한 번 정리했습니다. 실제 DB(약 8.8만 건)로 확인하고 회귀 테스트를 추가했습니다.</li>
+          </ul>
+        </div>
+        <div class="case">
+          <p class="case-title">이미 넘긴 구현을 개인정보 이유로 되돌림</p>
+          <ul>
+            <li>리더보드 닉네임을 기존 아이디에서 복사하게 했다가, 기존 사용자는 이런 공개를 예상하지 못했고 아이디에 이메일 형태도 허용돼 있었다는 점을 깨닫고 되돌렸습니다. 닉네임을 직접 등록한 사람만 리더보드에 나옵니다.</li>
+          </ul>
+        </div>
+
+        <h4>결과</h4>
+        <p>어종 251종, 회귀 테스트 63건, 가입 계정 155개(활동 사용자 수가 아닌 가입 수).</p>
+
+        <h4>한계와 배운 점</h4>
+        <p>수집기가 켜져 있는 동안 바뀐 기록만 잡힙니다. 코드 버그와 데이터 특성 문제를 먼저 나눠 보고, 데이터 현상이면 로직을 억지로 고치지 않는 습관이 생겼습니다.</p>
+      </div>
+    </details>
+  </article>
+</section>
+
+<section id="more">
+  <h2>그 밖의 경험</h2>
+  <ul class="more">
+    <li>
+      <p class="meta">2025.05 ~ 06 · 운영체제 수업 5인 팀</p>
+      <h3>리눅스 명령어 C 구현</h3>
+      <p>명령어 12개를 C로 구현해 하나의 셸로 묶은 프로젝트. 저는 가상 파일 시스템의 트리 구조와 main 실행 분기, pwd를 구현하고 팀원 코드를 합쳐 통합 테스트를 맡았습니다. "main은 하나, 명령어마다 실행 함수 하나, 선언과 정의 분리"라는 통합 규칙을 정했고, 합친 뒤 직접 돌려 보다가 find가 파일 내용을 찾고 있는 걸 발견해 바로잡았습니다.</p>
+    </li>
+    <li>
+      <p class="meta">2026.05 ~ 08 · 6인 · 공동 운영</p>
+      <h3>CS 스터디</h3>
+      <p>교육 과정 동기들과 자료구조, 운영체제, 네트워크, 데이터베이스를 7회 다뤘습니다. 비전공자가 많아 설명을 주로 맡았고, 7회 모두 정리본을 올렸으며 서브넷 연습문제를 따로 만들었습니다.</p>
+    </li>
+    <li>
+      <p class="meta">2025.06 · 소프트웨어공학 2인 과제</p>
+      <h3>식당 예약 사이트</h3>
+      <p>Flask로 REST API 7개를 만들고 먼저 전체가 도는 임시 버전을 공유했습니다. 요구사항이 애매한 부분은 교수님께 메일로 확인해 범위를 정했고, 요구사항에 없는 기능은 뺐습니다.</p>
+    </li>
+    <li>
+      <p class="meta">2022 · 개인</p>
+      <h3>아두이노 4단 수경재배기 제어기</h3>
+      <p>단별 조명과 급수 펌프를 시간에 맞춰 켜고 끄는 제어기. 처음엔 delay로 기다리게 짜서 버튼과 다른 주기가 모두 멈췄고, loop를 멈추지 않는 구조로 바꿨습니다. 일주일쯤 지나면 보드가 멈추는 문제는 원인을 끝까지 찾지 못했습니다.</p>
+    </li>
+  </ul>
+</section>
+
+<section id="skills">
+  <h2>써 본 기술</h2>
+  <p class="note">프로젝트에서 실제로 쓴 것만 적었습니다. 개인 프로젝트 코드는 AI가 작성했고, 저는 기술 선택과 검증을 맡았습니다.</p>
+  <dl class="skills">
+    <dt>백엔드</dt><dd>Java·Spring Boot, PostgreSQL (팀 프로젝트), Python·FastAPI, SQLite, Node.js·Socket.IO (개인 프로젝트)</dd>
+    <dt>프론트</dt><dd>Vanilla JS, Web Worker, 화면 캡처·Canvas API</dd>
+    <dt>데이터</dt><dd>scikit-learn 분류 모델 비교, LightGBM (모델링 단계)</dd>
+    <dt>배포·운영</dt><dd>GitHub Pages·Actions, Supabase, Cloudflare</dd>
+    <dt>기초</dt><dd>C, 아두이노</dd>
+    <dt>AI 협업</dt><dd>Claude Code, Codex. 역할별 에이전트 분리, 규칙 문서와 훅으로 작업 범위 제한, 검수 결과 교차 확인</dd>
+  </dl>
+</section>
+
+<section id="edu">
+  <h2>교육</h2>
+  <ul class="plain">
+    <li>AI 개발자 양성 과정 (2026.05 ~ 2026.12, 진행 중)</li>
+  </ul>
+</section>
+
+</main>
+
+<footer class="wrap foot">
+  <p>마지막 업데이트 2026-10-21</p>
+</footer>
+
+<script>
+  // 인쇄(PDF 저장) 때는 상세를 모두 펼친다
+  window.addEventListener('beforeprint', () => {
+    document.querySelectorAll('details').forEach(d => d.open = true);
+  });
+</script>
+</body>
+</html>
