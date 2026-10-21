@@ -231,3 +231,26 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .trail .s-res::before { border-color: var(--blue); background: var(--blue); }
 .trail .s-res b { color: var(--text); }
 .trail em { font-style: normal; font-weight: 700; color: var(--text); }
+
+/* 상세창 소개 */
+.mintro { margin-top: 16px; }
+.mintro .kicker { margin: 0; font-size: 12.5px; font-weight: 600; color: var(--faint); }
+.mintro .lead { margin: 4px 0 0; font-size: 16px; font-weight: 700; line-height: 1.5; text-wrap: balance; }
+.mlinks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.lbtn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); font-size: 13.5px; font-weight: 600; color: var(--text); transition: border-color .15s, background .15s; }
+.lbtn:hover { border-color: var(--blue); color: var(--blue); }
+.lbtn.live { background: var(--blue); border-color: var(--blue); color: #fff; }
+.lbtn.live:hover { background: var(--blue-deep); color: #fff; }
+.lbtn.off { color: var(--faint); background: var(--soft); border-color: transparent; }
+.lbtn svg { width: 14px; height: 14px; }
+.minfo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 12px; margin-top: 18px; }
+.minfo h5 { margin: 0 0 8px; font-size: 12.5px; font-weight: 700; color: var(--blue); letter-spacing: .02em; }
+.minfo ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+.feat li { position: relative; padding-left: 12px; }
+.feat li::before { content: ""; position: absolute; left: 0; top: .6em; width: 4px; height: 4px; border-radius: 50%; background: var(--blue); }
+.mine { background: var(--soft); border-radius: 10px; padding: 14px 16px; }
+.mine li { color: var(--sub); }
+.mine b { display: inline-block; min-width: 42px; margin-right: 6px; font-size: 12px; font-weight: 700; color: var(--blue-deep); }
+.mcases { margin: 24px 0 0; font-size: 15px; font-weight: 800; padding-top: 18px; border-top: 1px solid var(--line); }
+.mcases + .cases { margin-top: 12px; }
+@media (max-width: 640px) { .minfo { grid-template-columns: 1fr; } }
