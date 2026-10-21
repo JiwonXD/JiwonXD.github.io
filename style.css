@@ -250,7 +250,7 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .feat li::before { content: ""; position: absolute; left: 0; top: .6em; width: 4px; height: 4px; border-radius: 50%; background: var(--blue); }
 .mine { background: var(--soft); border-radius: 10px; padding: 14px 16px; }
 .mine li { color: var(--sub); }
-.mine b { display: inline-block; min-width: 42px; margin-right: 6px; font-size: 12px; font-weight: 700; color: var(--blue-deep); }
+.mine b { display: inline-block; min-width: 54px; margin-right: 6px; font-size: 12px; font-weight: 700; color: var(--blue-deep); }
 .mcases { margin: 24px 0 0; font-size: 15px; font-weight: 800; padding-top: 18px; border-top: 1px solid var(--line); }
 .mcases + .cases { margin-top: 12px; }
 @media (max-width: 640px) { .minfo { grid-template-columns: 1fr; } }
