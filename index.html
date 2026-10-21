@@ -21,6 +21,7 @@
     <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
     <symbol id="i-grad" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></symbol>
     <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
     <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></symbol>
@@ -171,6 +172,7 @@
         <div class="pbody">
           <div class="ptitle"><h3>자금세탁 모니터링</h3><span class="ai" tabindex="0" data-tip="구현에 AI 코딩 도구 활용"><svg><use href="#i-cpu"/></svg></span></div>
           <p class="pdesc">여러 은행 거래를 일 단위로 분석하는 백엔드</p>
+          <div class="pkpi"><span>그래프 생성</span><strong>건당 0.14s → 0.5ms</strong><i class="tip" tabindex="0" data-tip="로컬 CPU, 데모 하루치 11.5만 건, 1회 측정"><svg><use href="#i-info"/></svg></i></div>
           <ul class="pmeta">
             <li><svg><use href="#i-cal"/></svg>기간 : 2026.08 ~ 진행 중</li>
             <li><svg><use href="#i-users"/></svg>팀 구성 : 5인, 기업연계</li>
@@ -189,6 +191,7 @@
         <div class="pbody">
           <div class="ptitle"><h3>자격증 퀴즈 대전</h3><span class="ai" tabindex="0" data-tip="구현에 AI 코딩 도구 활용"><svg><use href="#i-cpu"/></svg></span></div>
           <p class="pdesc">2~4명이 실시간으로 겨루는 퀴즈 서비스</p>
+          <div class="pkpi"><span>접속 유입 시 p95</span><strong>최대 2.7s → 0.1s 이하</strong><i class="tip" tabindex="0" data-tip="로컬 재현, CPU 0.1개와 512MB 제한, 봇 400명에서 800명까지 초당 5명 유입, 1회 측정"><svg><use href="#i-info"/></svg></i></div>
           <ul class="pmeta">
             <li><svg><use href="#i-cal"/></svg>기간 : 2026.10</li>
             <li><svg><use href="#i-users"/></svg>팀 구성 : 개인</li>
@@ -206,7 +209,8 @@
         </div>
         <div class="pbody">
           <div class="ptitle"><h3>선단 편성 최적화</h3><span class="ai" tabindex="0" data-tip="구현에 AI 코딩 도구 활용"><svg><use href="#i-cpu"/></svg></span></div>
-          <p class="pdesc">77명 배치 탐색기와 화면 인식 도착 알림</p>
+          <p class="pdesc">77석 배치 탐색기와 화면 인식 도착 알림</p>
+          <div class="pkpi"><span>목표 14개 달성</span><strong>5회 중 1회 → 5회 중 5회</strong><i class="tip" tabindex="0" data-tip="실제 선단 파일, 10초 탐색, 로컬 각 5회"><svg><use href="#i-info"/></svg></i></div>
           <ul class="pmeta">
             <li><svg><use href="#i-cal"/></svg>기간 : 2026.09 ~ 10</li>
             <li><svg><use href="#i-users"/></svg>팀 구성 : 개인</li>
@@ -225,6 +229,7 @@
         <div class="pbody">
           <div class="ptitle"><h3>낚시 기록 트렌드</h3><span class="ai" tabindex="0" data-tip="구현에 AI 코딩 도구 활용"><svg><use href="#i-cpu"/></svg></span></div>
           <p class="pdesc">어종별 활성도와 미끼, 수역 대시보드</p>
+          <div class="pkpi"><span>상세 조회 미사용 SQL</span><strong>4개 → 0개</strong><i class="tip" tabindex="0" data-tip="변경 전후 코드와 화면 소비처 대조"><svg><use href="#i-info"/></svg></i></div>
           <ul class="pmeta">
             <li><svg><use href="#i-cal"/></svg>기간 : 2026.06 ~ 07</li>
             <li><svg><use href="#i-users"/></svg>팀 구성 : 개인</li>
@@ -277,41 +282,45 @@
 <!-- 프로젝트 상세 -->
 <dialog id="d-aml" class="modal">
   <div class="mhead">
-    <div><h3>자금세탁 모니터링 백엔드</h3><p>2026.08 ~ 진행 중 / 5인 팀</p></div>
+    <div><h3>자금세탁 모니터링 백엔드</h3><p>2026.08 ~ 진행 중 / 5인 팀 / 데모 데이터</p></div>
     <button type="button" class="close" aria-label="닫기"><svg><use href="#i-x"/></svg></button>
   </div>
   <ul class="stack"><li>Java 21</li><li>Spring Boot</li><li>PostgreSQL</li><li>Flyway</li><li>Testcontainers</li><li>Python</li><li>AWS S3</li></ul>
   <div class="cases">
     <section class="case">
-      <h4>9일째 분석 준비 146s → 990s</h4>
+      <h4>추론 서버와의 첫 왕복이 끝나지 않음</h4>
+      <ol class="trail">
+        <li class="s-sym"><b>증상</b><span>작업이 결과 대기에서 352회 반복</span></li>
+        <li class="s-no"><b>배제</b><span>통신 문제. 서버 상태와 요청 조회를 직접 호출해 정상 응답 확인</span></li>
+        <li class="s-yes"><b>원인</b><span>전송 실패 후 서버의 "요청 없음"을 조회 실패로 보고 계속 대기</span></li>
+        <li class="s-fix"><b>해결</b><span>"요청 없음"이 확실할 때만 같은 요청 ID로 재전송</span></li>
+        <li class="s-yes"><b>원인</b><span>재전송 상태값이 대기 조건 목록에 없음. 조건을 그대로 검사하는 테스트 추가</span></li>
+        <li class="s-yes"><b>원인</b><span>저장소 기본 경로의 접두어 한 단계 누락, 서버가 새 설정을 읽지 않은 상태</span></li>
+        <li class="s-res"><b>결과</b><span><em>첫 왕복 성공</em>, 점수 115,270건 로컬 결과와 일치</span></li>
+      </ol>
+    </section>
+    <section class="case">
+      <h4>그래프 생성 건당 0.14초</h4>
       <dl>
-        <dt>원인</dt><dd>처리 범위가 현실 시각을 따라 늘어남. 달력 1,144일, 스왑 소진</dd>
-        <dt>해결</dt><dd>업무 시각 통일, 워커는 필요한 열만 스트리밍</dd>
-        <dt>결과</dt><dd><em>메모리 2,378 → 782MiB</em>, 7~10일째 76~90s</dd>
+        <dt>원인</dt><dd>모델 원본 코드가 거래마다 DB 질의로 그래프 생성</dd>
+        <dt>해결</dt><dd>같은 그래프를 메모리에서 생성</dd>
+        <dt>결과</dt><dd><em>건당 0.5ms</em>, 하루치 약 4.5시간(계산) → 12분(실측). 80건, 1,003건에서 결과 동일</dd>
       </dl>
     </section>
     <section class="case">
-      <h4>dev에서만 조회 30초 이상</h4>
+      <h4>매일 누적 거래 전체를 전송</h4>
       <dl>
-        <dt>원인</dt><dd>새 테이블 통계 부재. 추정 4행, 실제 12,424행</dd>
-        <dt>해결</dt><dd>통계 없이도 버티는 쿼리 구조, 분석 완료 시 통계 자동 수집</dd>
-        <dt>결과</dt><dd><em>대시보드 1.05s, Alert 1.15s</em> (dev 중앙값)</dd>
+        <dt>원인</dt><dd>누적 300만 건이면 파일 한도 256MB 도달 (계산)</dd>
+        <dt>해결</dt><dd>첫날만 전체, 이후 바뀐 거래만 전송</dd>
+        <dt>결과</dt><dd><em>16일 입력 일치, 점수 차 0</em> (로컬 171만 건)</dd>
       </dl>
     </section>
     <section class="case">
-      <h4>거래당 SQL 4회, 87분째 미완료</h4>
+      <h4>실패하면 DB 초기화 후 전체 재실행</h4>
       <dl>
-        <dt>원인</dt><dd>건별 처리</dd>
-        <dt>해결</dt><dd>집합 기반 INSERT 2회 + UPSERT 1회, 트랜잭션과 재시도 계약 유지</dd>
-        <dt>결과</dt><dd><em>합성 10만 건 17.3s</em>, 첫날 115,270건 복구 처리</dd>
-      </dl>
-    </section>
-    <section class="case">
-      <h4>Alert 하나에 핵심 거래 4,096건</h4>
-      <dl>
-        <dt>원인</dt><dd>Alert 크기 기준 없음</dd>
-        <dt>해결</dt><dd>핵심 상한 64, 큰 사례는 Episode로 분리</dd>
-        <dt>결과</dt><dd><em>정상 거래만의 Alert 826 → 10.2</em> (1,000건당)</dd>
+        <dt>원인</dt><dd>실패한 요청 기록이 재개와 초기화를 막음</dd>
+        <dt>해결</dt><dd>실패한 모델만 준비된 입력으로 새 회차 재전송</dd>
+        <dt>결과</dt><dd><em>강제 종료 시험 결과 동일</em>, dev 작업 2회차 완료</dd>
       </dl>
     </section>
   </div>
@@ -325,27 +334,40 @@
   <ul class="stack"><li>Node.js</li><li>Express</li><li>Socket.IO</li><li>Supabase</li><li>PostgreSQL</li><li>Cloudflare</li></ul>
   <div class="cases">
     <section class="case">
-      <h4>방 목록 방송이 전송량의 96.6%</h4>
+      <h4>접속이 몰리면 모두가 느려짐</h4>
+      <ol class="trail">
+        <li class="s-sym"><b>증상</b><span>초당 10명 유입 시 전원 응답 0.2~1초 지연 (CPU 0.1개 로컬 재현)</span></li>
+        <li class="s-no"><b>배제</b><span>게임 처리 부하. 유입 없이 게임만 진행하면 지연 1ms</span></li>
+        <li class="s-yes"><b>원인</b><span>입장, 방 변경마다 전원에게 방송. 방 목록이 전송량의 96.6%</span></li>
+        <li class="s-chk"><b>점검</b><span>측정한 코드가 최신이 아님을 발견, 최신 코드로 재측정</span></li>
+        <li class="s-yes"><b>원인</b><span>순위 조회마다 전체 회원 정렬 (1만 명 17ms, 1코어)</span></li>
+        <li class="s-fix"><b>해결</b><span>방 목록 1초 묶음으로 로비에만 전송, 순위는 저장 후 쓰기 때만 재계산</span></li>
+        <li class="s-res"><b>결과</b><span><em>p95 최대 2.7s → 0.1s 이하</em>, 전송량 1,199 → 447MB</span></li>
+        <li class="s-left"><b>남음</b><span>1~3분마다 GC 멈춤. 힙 설정은 유입 지연만 개선, 문제 은행 지연 로딩 검토</span></li>
+      </ol>
+    </section>
+    <section class="case">
+      <h4>잘못된 요청 하나로 서버 종료</h4>
       <dl>
-        <dt>원인</dt><dd>상태가 바뀔 때마다 전원에게 방 목록 방송, 순위 계산마다 전체 회원 정렬</dd>
-        <dt>해결</dt><dd>방송을 1초, 3초 단위로 묶어 로비에만 전송, 순위표 캐시. 압축은 CPU +40%로 제외</dd>
-        <dt>결과</dt><dd><em>전송량 63% 감소</em> (CPU 0.1, 512MB 로컬 테스트)</dd>
+        <dt>원인</dt><dd>소켓 이벤트 인자 검증 누락. 코드 리뷰에서 못 찾고 퍼징에서 발견</dd>
+        <dt>해결</dt><dd>이벤트 25개 × 이상값 37개 × 상태 4개 퍼징, 재현 테스트 6개</dd>
+        <dt>결과</dt><dd><em>단일 장애점 제거</em>, 수정 전후 p99 5ms 이하로 성능 변화 없음</dd>
+      </dl>
+    </section>
+    <section class="case">
+      <h4>빠르게 누르면 선택이 되돌아감</h4>
+      <dl>
+        <dt>원인</dt><dd>응답 전에 옛 서버 상태로 다음 값을 계산</dd>
+        <dt>해결</dt><dd>응답을 200ms 늦춘 서버로 재현, 화면 상태 기준으로 전송</dd>
+        <dt>결과</dt><dd><em>시나리오 5개 통과</em></dd>
       </dl>
     </section>
     <section class="case">
       <h4>재시작마다 전적 소실</h4>
       <dl>
         <dt>원인</dt><dd>무료 서버 디스크 초기화</dd>
-        <dt>해결</dt><dd>Supabase 이전. 만료형 DB, Firebase, 직접 OAuth는 비교 후 제외</dd>
-        <dt>결과</dt><dd><em>Google, 카카오 로그인</em>, 서버 측 토큰 검증</dd>
-      </dl>
-    </section>
-    <section class="case">
-      <h4>코드 문제 정답 검증</h4>
-      <dl>
-        <dt>원인</dt><dd>텍스트만으로는 정답 확인 불가</dd>
-        <dt>해결</dt><dd>코드를 실제 실행해 정답과 같은 것만 수록</dd>
-        <dt>결과</dt><dd><em>코드 문제 155개</em>, 전체 16,954문항</dd>
+        <dt>해결</dt><dd>Supabase 이전, 서버 측 토큰 검증</dd>
+        <dt>결과</dt><dd><em>Google, 카카오 로그인</em></dd>
       </dl>
     </section>
   </div>
@@ -359,27 +381,34 @@
   <ul class="stack"><li>JavaScript</li><li>Web Worker</li><li>Canvas</li><li>Python</li><li>GitHub Actions</li></ul>
   <div class="cases">
     <section class="case">
-      <h4>출항 화면을 도착으로 오인</h4>
-      <dl>
-        <dt>원인</dt><dd>글꼴과 배치가 같아 일치율 0.53~0.59</dd>
-        <dt>해결</dt><dd>음성 템플릿 감점, 검사 영역 제한, 배율별 템플릿 5종</dd>
-        <dt>결과</dt><dd><em>출항 0.00, 도착 0.83~1.00</em>, 1회 30~60ms</dd>
-      </dl>
-    </section>
-    <section class="case">
       <h4>목표 14개 중 13개에서 정체</h4>
-      <dl>
-        <dt>원인</dt><dd>필요한 인원이 다른 배에 묶여 1:1 교체 불가</dd>
-        <dt>해결</dt><dd>재배치 이동 추가, 스탯은 캐릭터별 최고치 대비 비율로 비교</dd>
-        <dt>결과</dt><dd><em>14/14 달성</em>, 인원 77 → 69~71명</dd>
-      </dl>
+      <ol class="trail">
+        <li class="s-sym"><b>증상</b><span>목표 하나가 9/10에서 멈춤, 10초 탐색에서도 13/14</span></li>
+        <li class="s-no"><b>배제</b><span>보유 필터가 기여자를 제외. 승선 중 미보유 인원 0명</span></li>
+        <li class="s-no"><b>배제</b><span>기술 보유자 부족. 보유자 14명, 목표 선박에는 9명</span></li>
+        <li class="s-yes"><b>원인</b><span>나머지 5명이 다른 배에 묶임. 이동 후 빈자리를 채우는 연산이 없음</span></li>
+        <li class="s-fix"><b>해결</b><span>선박 간 재배치 이동 추가</span></li>
+        <li class="s-res"><b>결과</b><span><em>14/14 달성 5회 중 1회 → 5회 중 5회</em></span></li>
+      </ol>
     </section>
     <section class="case">
-      <h4>휴리스틱 결과 신뢰성</h4>
+      <h4>다른 화면에서도 도착 알림이 울림</h4>
+      <ol class="trail">
+        <li class="s-sym"><b>증상</b><span>조합, 의뢰 화면 일치 점수 0.766, 0.819</span></li>
+        <li class="s-fix"><b>해결</b><span>공통 아이콘을 빼고 글자만 비교, 의뢰 화면 0.651</span></li>
+        <li class="s-yes"><b>원인</b><span>대신 UI 105% 실제 도착이 0.800으로 하락. 배율별 렌더링 차이</span></li>
+        <li class="s-fix"><b>해결</b><span>배율별 템플릿 추가, 0.952로 회복</span></li>
+        <li class="s-yes"><b>원인</b><span>항해 중 채팅 속 같은 글자에 0.931. 글자는 같고 위치가 다름</span></li>
+        <li class="s-fix"><b>해결</b><span>제목 시작 위치를 좌상단으로 제한, 0.396</span></li>
+        <li class="s-res"><b>결과</b><span><em>도착 28장 최저 0.828, 비도착 11장 최고 0.617</em> (기준 0.8), 프레임당 31ms</span></li>
+      </ol>
+    </section>
+    <section class="case">
+      <h4>탐색 결과를 믿을 수 있는가</h4>
       <dl>
-        <dt>원인</dt><dd>10초 탐색은 최적해 미보장</dd>
-        <dt>해결</dt><dd>실제 파일과 변형 3개를 MILP로 풀어 대조, 상태 퍼징</dd>
-        <dt>결과</dt><dd><em>4건 모두 최적값 일치</em>, 퍼징 위반 0건</dd>
+        <dt>원인</dt><dd>10초 휴리스틱은 최적해 미보장</dd>
+        <dt>해결</dt><dd>정수계획법으로 정확한 최적값을 구해 대조</dd>
+        <dt>결과</dt><dd><em>목표 6, 10개 매번 최적</em>, 16, 23개 0.22% 이내 (각 5회)</dd>
       </dl>
     </section>
   </div>
@@ -393,27 +422,38 @@
   <ul class="stack"><li>Python</li><li>FastAPI</li><li>SQLite</li><li>scikit-learn</li><li>Cloudflare Tunnel</li></ul>
   <div class="cases">
     <section class="case">
+      <h4>상세 페이지의 이중 집계</h4>
+      <ol class="trail">
+        <li class="s-sym"><b>증상</b><span>서버 SQL 집계와 화면 집계가 함께 존재</span></li>
+        <li class="s-no"><b>배제</b><span>"서버 집계는 초기값으로 필요"라는 주석. 반환값별 소비처 검색, 화면은 원본으로 직접 집계</span></li>
+        <li class="s-yes"><b>원인</b><span>유일한 소비자는 회귀 테스트. 테스트를 화면과 같은 계산으로 이전</span></li>
+        <li class="s-res"><b>결과</b><span><em>상세 조회 미사용 SQL 4개 → 0개</em></span></li>
+      </ol>
+    </section>
+    <section class="case">
+      <h4>같은 미끼가 따로 집계됨</h4>
+      <ol class="trail">
+        <li class="s-sym"><b>증상</b><span>크기만 달라도 다른 미끼로 집계돼 점유율이 희석</span></li>
+        <li class="s-no"><b>배제</b><span>끝 숫자 일괄 제거. 2,909종 조사 결과 끝 숫자가 색상인 경우 존재</span></li>
+        <li class="s-yes"><b>원인</b><span>조합 순서만 다른 표기도 별개 집계 (874건, 238건)</span></li>
+        <li class="s-fix"><b>해결</b><span>크기만 제거, 색상 보존, 조합 순서 통일. 파서 사례 27건 통과</span></li>
+        <li class="s-res"><b>결과</b><span><em>282그룹 중 57그룹 점유율 상승</em>, 평균 +2.8%p</span></li>
+      </ol>
+    </section>
+    <section class="case">
+      <h4>카드와 상세 화면 비율 불일치</h4>
+      <dl>
+        <dt>원인</dt><dd>상세 화면은 상위 15종만 분모에 포함</dd>
+        <dt>해결</dt><dd>분모 기준 통일</dd>
+        <dt>결과</dt><dd><em>62% → 47%</em>, 카드와 일치</dd>
+      </dl>
+    </section>
+    <section class="case">
       <h4>고정 공식이 어종마다 안 맞음</h4>
       <dl>
         <dt>원인</dt><dd>어종별 희귀도와 기록 규모 차이</dd>
-        <dt>해결</dt><dd>라벨 381건으로 모델 비교. 태블릿에서 sklearn 불가해 트리를 JSON으로 내보내 순수 Python 추론</dd>
-        <dt>결과</dt><dd><em>RandomForest 64%</em> (기준선 33%, 라벨 평가)</dd>
-      </dl>
-    </section>
-    <section class="case">
-      <h4>시간 필터 무반응</h4>
-      <dl>
-        <dt>원인</dt><dd>저장 시각과 비교 문자열의 구분자 불일치</dd>
-        <dt>해결</dt><dd>저장 형식 통일, 과거 데이터 일괄 정리</dd>
-        <dt>결과</dt><dd><em>8.8만 건 검증</em>, 회귀 테스트 추가</dd>
-      </dl>
-    </section>
-    <section class="case">
-      <h4>요청마다 전 어종 재계산</h4>
-      <dl>
-        <dt>원인</dt><dd>15분 갱신 데이터를 요청 시점에 계산</dd>
-        <dt>해결</dt><dd>적재 직후 사전 계산, 원자적 교체, 실패 시 즉석 계산</dd>
-        <dt>결과</dt><dd><em>251종 0.42s</em> (24시간 19,367건, PC)</dd>
+        <dt>해결</dt><dd>라벨 381건으로 모델 비교, 트리를 JSON으로 내보내 태블릿에서 추론</dd>
+        <dt>결과</dt><dd><em>RandomForest 64%</em> (다수 클래스 기준선 33%, 5-fold)</dd>
       </dl>
     </section>
   </div>

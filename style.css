@@ -207,3 +207,28 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .contrib-legend { display: flex; justify-content: flex-end; align-items: center; gap: 3px; margin-top: 10px; font-size: 12px; color: var(--faint); }
 .contrib-legend span { margin: 0 4px; }
 .contrib-tip { position: absolute; transform: translate(-50%, calc(-100% - 6px)); background: var(--text); color: #fff; font-size: 12px; padding: 4px 8px; border-radius: 5px; white-space: pre; pointer-events: none; z-index: 5; }
+
+/* 카드 대표 지표 */
+.pkpi { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; padding: 8px 12px; border-radius: 8px; background: var(--blue-soft); font-size: 13px; flex-wrap: wrap; }
+.pkpi span { color: var(--sub); }
+.pkpi strong { color: var(--blue-deep); font-weight: 700; }
+.pkpi .tip { font-style: normal; margin-left: auto; display: inline-flex; color: var(--faint); cursor: help; position: relative; z-index: 2; }
+.pkpi .tip[data-tip]::after { left: auto; right: -4px; transform: translate(0, 4px); }
+.pkpi .tip[data-tip]:hover::after, .pkpi .tip[data-tip]:focus-visible::after { transform: translate(0, 0); }
+
+/* 원인 추적 단계 */
+.trail { list-style: none; margin: 0; padding: 0; }
+.trail li { position: relative; display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 10px; padding: 0 0 10px 20px; font-size: 14px; color: var(--sub); }
+.trail li:last-child { padding-bottom: 0; }
+.trail li::before { content: ""; position: absolute; left: 2px; top: 6px; width: 9px; height: 9px; border-radius: 50%; background: var(--bg); border: 2px solid var(--faint); box-sizing: border-box; }
+.trail li::after { content: ""; position: absolute; left: 5.5px; top: 17px; bottom: 1px; width: 2px; background: var(--line); }
+.trail li:last-child::after { display: none; }
+.trail b { font-size: 12.5px; font-weight: 600; color: var(--faint); padding-top: 1px; }
+.trail .s-no span { color: var(--faint); }
+.trail .s-yes::before { border-color: var(--blue); }
+.trail .s-yes b { color: var(--blue); }
+.trail .s-fix::before { border-color: var(--blue-deep); background: var(--blue-deep); }
+.trail .s-fix b { color: var(--blue-deep); }
+.trail .s-res::before { border-color: var(--blue); background: var(--blue); }
+.trail .s-res b { color: var(--text); }
+.trail em { font-style: normal; font-weight: 700; color: var(--text); }
