@@ -231,7 +231,7 @@
         <div class="pbody">
           <div class="ptitle"><h3>낚시 게임 입질 모니터링</h3><span class="ai" tabindex="0" data-tip="구현에 AI 코딩 도구 활용"><svg><use href="#i-cpu"/></svg></span></div>
           <p class="pdesc">어종별 활성도와 미끼, 수역 대시보드</p>
-          <div class="pkpi"><span>상세 조회 미사용 SQL</span><strong>4개 → 0개</strong><i class="tip" tabindex="0" data-tip="변경 전후 코드와 화면 소비처 대조"><svg><use href="#i-info"/></svg></i></div>
+          <div class="pkpi"><span>활성도 판정 정확도</span><strong>기준선 33% → 64%</strong><i class="tip" tabindex="0" data-tip="사람이 판정한 라벨 381건, 5-fold 교차검증, 기준선은 다수 클래스 예측"><svg><use href="#i-info"/></svg></i></div>
           <ul class="pmeta">
             <li><svg><use href="#i-cal"/></svg>기간 : 2026.06 ~ 07</li>
             <li><svg><use href="#i-users"/></svg>팀 구성 : 개인</li>
@@ -464,6 +464,14 @@
   <h4 class="mcases">문제 해결</h4>
   <div class="cases">
     <section class="case">
+      <h4>고정 공식이 어종마다 안 맞음</h4>
+      <dl>
+        <dt>원인</dt><dd>어종별 희귀도와 기록 규모 차이</dd>
+        <dt>해결</dt><dd>라벨 381건으로 모델 비교, 트리를 JSON으로 내보내 태블릿에서 추론</dd>
+        <dt>결과</dt><dd><em>RandomForest 64%</em> (다수 클래스 기준선 33%, 5-fold)</dd>
+      </dl>
+    </section>
+    <section class="case">
       <h4>같은 미끼가 따로 집계됨</h4>
       <ol class="trail">
         <li class="s-sym"><b>증상</b><span>크기만 달라도 다른 미끼로 집계돼 점유율이 희석</span></li>
@@ -479,14 +487,6 @@
         <dt>원인</dt><dd>상세 화면은 상위 15종만 분모에 포함</dd>
         <dt>해결</dt><dd>분모 기준 통일</dd>
         <dt>결과</dt><dd><em>62% → 47%</em>, 카드와 일치</dd>
-      </dl>
-    </section>
-    <section class="case">
-      <h4>고정 공식이 어종마다 안 맞음</h4>
-      <dl>
-        <dt>원인</dt><dd>어종별 희귀도와 기록 규모 차이</dd>
-        <dt>해결</dt><dd>라벨 381건으로 모델 비교, 트리를 JSON으로 내보내 태블릿에서 추론</dd>
-        <dt>결과</dt><dd><em>RandomForest 64%</em> (다수 클래스 기준선 33%, 5-fold)</dd>
       </dl>
     </section>
   </div>
