@@ -150,6 +150,7 @@ mark { background: var(--mark); color: var(--mark-ink); padding: 0 3px; }
 
 .log { display: flex; flex-direction: column; gap: 14px; }
 .entry { background: var(--card); border: 1px solid var(--rule); padding: 22px 24px; }
+.entry .topic { display: inline-block; font-family: var(--f-mono); font-size: 11.5px; color: var(--cobalt); margin-bottom: 6px; }
 .entry h4 { margin: 0 0 14px; font-size: 18px; letter-spacing: -0.02em; line-height: 1.45; }
 .entry dl { margin: 0; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 10px 16px; }
 .entry dt { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--mute); padding-top: 4px; }

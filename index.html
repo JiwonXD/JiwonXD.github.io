@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>박지원 포트폴리오</title>
-<meta name="description" content="박지원의 프로젝트 기록. 무엇을 만들지 정하고, AI가 쓴 코드를 검증하고, 원인을 좁혀 간 과정.">
+<meta name="description" content="박지원의 프로젝트 기록. 성능과 구조 문제를 측정으로 좁혀 고친 과정.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,9 +29,9 @@
 <main class="wrap">
 
 <section class="hero">
-  <p class="label">박지원 · 신입 개발자</p>
-  <h1>AI가 짠 코드가 <em>맞는지</em>,<br>원인까지 확인하는 개발자</h1>
-  <p class="intro">2026년에 팀 프로젝트 하나와 개인 프로젝트 셋을 AI 에이전트와 만들었습니다. 코드는 AI가 썼고, 저는 무엇을 만들지 정하고, AI의 제안을 받아들이거나 뒤집고, 실제 환경에서 재현해 확인했습니다. 아래 숫자는 그렇게 원인을 좁혀서 바뀐 것들입니다.</p>
+  <p class="label">박지원 · 신입 백엔드 개발자</p>
+  <h1>느려진 이유를 <em>측정</em>으로 찾고,<br>구조를 바꿔 고칩니다</h1>
+  <p class="intro">금융 거래 분석 백엔드(Spring·PostgreSQL), 실시간 대전 서버(Node.js·Socket.IO), 브라우저 화면 인식과 배치 최적화를 만들었습니다. 가설이 틀리면 버리고, 실환경에서 다시 재서 원인을 좁히는 방식으로 일합니다.</p>
   <div class="contact">
     <a href="https://github.com/JiwonXD">github.com/JiwonXD</a>
   </div>
@@ -41,7 +41,7 @@
   <div class="delta">
     <span class="src">자금세탁 모니터링</span>
     <span class="num"><s>990초</s><span class="arrow">→</span>76~90초</span>
-    <p>9일째 분석 준비 시간. 프로그램이 현실 시각을 참조하던 결함을 찾아 고침</p>
+    <p>9일째 분석 준비 시간. 실행 시각에 따라 처리 범위가 늘어나던 결함을 고침</p>
   </div>
   <div class="delta">
     <span class="src">자금세탁 모니터링</span>
@@ -56,22 +56,10 @@
   <div class="delta">
     <span class="src">선단 편성</span>
     <span class="num">4 / 4건</span>
-    <p>10초 탐색 결과가 정수계획법으로 구한 최적값과 같았던 사례</p>
+    <p>휴리스틱 10초 탐색이 정수계획법(MILP) 최적값과 일치한 비율</p>
   </div>
 </section>
 
-<section class="split-role" aria-label="역할 구분">
-  <div>
-    <span class="label">AI가 한 일</span>
-    <h2>코드와 실행</h2>
-    <p>코드 작성, PR, 테스트 코드, 부하 테스트 실행, 문서 초안</p>
-  </div>
-  <div>
-    <span class="label" style="color: var(--cobalt)">제가 한 일</span>
-    <h2>범위, 판단, 검증</h2>
-    <p>만들 범위와 사양, 설계 결정, AI 제안 검토와 기각, 실제 환경에서 재현과 확인, 머지 결정</p>
-  </div>
-</section>
 
 <div class="sec-head">
   <h2>프로젝트</h2>
@@ -86,8 +74,8 @@
     <p class="one">여러 은행의 거래 보고를 모아 하루 단위로 분석하고, 의심 거래 묶음(Alert)을 조사 화면에 넘기는 백엔드</p>
     <dl class="facts">
       <dt>형태</dt><dd>5인 팀, 교육 과정 기업연계</dd>
-      <dt>맡은 일</dt><dd>8월 모델링, 9월부터 백엔드·QA. 은행 수집, 원장, 일별 분석, API, DB, 통합 검증</dd>
-      <dt>방식</dt><dd>코드는 AI 작성. 요구·API 계약·스키마·재시도 정책 결정과 dev 서버 검증</dd>
+      <dt>담당</dt><dd>8월 모델링, 9월부터 백엔드·QA. 은행 수집, 원장, 일별 분석, API, DB, 통합 검증</dd>
+      <dt>개발</dt><dd>설계·API 계약·스키마·재시도 정책을 정하고 dev 서버에서 검증. 구현은 AI 코딩 도구 활용</dd>
     </dl>
     <ul class="stack"><li>Java 21</li><li>Spring Boot</li><li>PostgreSQL 17</li><li>Flyway</li><li>Testcontainers</li><li>Python</li><li>AWS S3</li></ul>
   </aside>
@@ -95,27 +83,43 @@
     <p class="why">규칙 기반 거래 모니터링은 오탐률이 90~95%로 보고됩니다. 팀은 은행 한 곳이 아니라 여러 은행의 보고를 모으는 감독기관형 구조로, Alert를 사람이 한 패턴을 판단할 수 있는 크기로 정의하는 데서 출발했습니다. 저에게는 첫 Java·Spring 프로젝트입니다.</p>
     <div class="log">
       <section class="entry">
+        <span class="topic">메모리 · 시간 처리</span>
         <h4>9일째 분석 준비가 146초에서 990초로 뛰었다</h4>
         <dl>
-          <dt>문제</dt><dd>10일치 관통 테스트 중 9일째에 준비 시간이 급증했습니다. 첫 가설인 Alert 수 증가는 같은 규모 합성 부하에서 81초로 재현되지 않았습니다.</dd>
-          <dt class="me">판단</dt><dd>실환경 측정에서 메모리 압박과 함께 커버리지 달력이 1,144일로 잡힌 것을 봤습니다. AI는 커버리지 계약을 바꾸자고 했지만, 프로그램은 현실의 현재 시각을 몰라야 한다고 짚었습니다. 업무 시각을 하나로 통일하고 워커는 필요한 열만 읽게 했습니다.</dd>
-          <dt>결과</dt><dd class="result">달력 <mark>1,144일 → 5~6일</mark>, 워커 최대 메모리 <mark>2,378 → 782MiB</mark>, 7~10일째 준비 시간 76~90초로 평탄. 결과가 같은지 해시로 확인</dd>
+          <dt>문제</dt><dd>10일치 관통 테스트 중 9일째에 준비 시간이 급증했습니다. 첫 가설이던 Alert 수 증가는 같은 규모 합성 부하에서 81초로 재현되지 않아 버렸습니다.</dd>
+          <dt>원인</dt><dd>실환경 측정에서 스왑 1GiB가 7분간 소진되는 메모리 압박이 보였고, 같은 측정에서 커버리지 달력이 1,144일로 잡혔습니다. 처리 범위가 업무 기준일이 아니라 실행 시점의 현실 시각을 따라 늘어나고 있었습니다.</dd>
+          <dt class="me">해결</dt><dd>프로그램이 현실 시각을 참조하지 않도록 업무 시각을 하나로 통일하고, Python 워커는 필요한 열만 스트리밍으로 읽게 바꿨습니다.</dd>
+          <dt>결과</dt><dd class="result">달력 <mark>1,144일 → 5~6일</mark>, 워커 최대 메모리 <mark>2,378 → 782MiB</mark>, 7~10일째 준비 시간 76~90초로 평탄. 바뀌기 전후 결과가 같은지 해시로 확인</dd>
         </dl>
       </section>
       <section class="entry">
+        <span class="topic">알고리즘 설계</span>
         <h4>Alert 하나에 핵심 거래 4,096건이 묶였다</h4>
         <dl>
-          <dt>문제</dt><dd>정답 패턴은 최대 32건이고 95%가 11건 이하인데, 생성기는 수천 건짜리 묶음을 만들었습니다.</dd>
-          <dt class="me">판단</dt><dd>100건이 넘는 묶음을 한 패턴이라 부를 수 없다고 보고, 조직 단위 사례는 Alert를 모은 Episode로 넘겼습니다. 핵심 상한을 64로 정했고 상한값마다 근거를 요구해 외부 자료를 확인했습니다.</dd>
+          <dt>문제</dt><dd>정답 패턴은 최대 32건이고 95%가 11건 이하인데, Alert 생성기는 수천 건짜리 묶음을 만들었습니다.</dd>
+          <dt>원인</dt><dd>한 Alert가 얼마나 커도 되는지 기준이 정해져 있지 않았습니다.</dd>
+          <dt class="me">해결</dt><dd>Alert를 사람이 한 패턴으로 판단할 수 있는 단위로 다시 정의했습니다. 핵심 거래 상한을 64로 두고, 조직 단위의 큰 사례는 Alert를 묶은 Episode로 넘겼습니다. 상한값마다 외부 자료로 근거를 확인했습니다.</dd>
           <dt>결과</dt><dd class="result">정상 거래만으로 된 Alert(1,000건당) <mark>826 → 10.2</mark>, 핵심 최대 194 → 52</dd>
         </dl>
       </section>
       <section class="entry">
+        <span class="topic">쿼리 플랜 · PostgreSQL</span>
         <h4>로컬에선 빨랐는데 dev 서버에선 30초가 넘었다</h4>
         <dl>
-          <dt>문제</dt><dd>EXPLAIN에서 추정 4행, 실제 12,424행. 새 테이블에 통계가 없어 반복 비교가 폭증했습니다.</dd>
-          <dt class="me">판단</dt><dd>수동 ANALYZE로 1.3초가 됐지만 그걸 필수 절차로 두지 않았습니다. 통계 없이도 버티는 쿼리 구조로 바꾸고, 분석이 끝날 때 통계를 자동 수집하게 했습니다.</dd>
+          <dt>문제</dt><dd>위험도 정렬을 24.9초에서 로컬 376ms로 줄였는데, dev 배포 후 Alert 조회 31.8초, 대시보드 33.8초로 오히려 느려졌습니다.</dd>
+          <dt>원인</dt><dd>EXPLAIN에서 추정 4행, 실제 12,424행. 새 테이블에 통계가 없어 플래너가 행 수를 크게 잘못 추정했고, 반복 비교가 1.5억 회에 달했습니다.</dd>
+          <dt class="me">해결</dt><dd>수동 ANALYZE로 1.3초가 됐지만 그걸 운영 절차에 기대지 않았습니다. 통계가 없어도 버티는 쿼리 구조로 바꾸고, 분석이 끝날 때 통계를 자동 수집하게 했습니다.</dd>
           <dt>결과</dt><dd class="result">dev 중앙값 대시보드 <mark>1.05초</mark>, Alert 조회 <mark>1.15초</mark></dd>
+        </dl>
+      </section>
+      <section class="entry">
+        <span class="topic">배치 처리</span>
+        <h4>dev 서버 분석이 87분째 멈춰 있었다</h4>
+        <dl>
+          <dt>문제</dt><dd>입력 고정 단계가 87분째 진행 중이었고 잠금 대기는 없었습니다.</dd>
+          <dt>원인</dt><dd>거래 한 건마다 SQL을 4번씩 실행하고 있었습니다.</dd>
+          <dt class="me">해결</dt><dd>집합 기반 INSERT 2회와 UPSERT 1회로 바꾸고, 트랜잭션·취소·재시도 계약은 그대로 유지했습니다.</dd>
+          <dt>결과</dt><dd class="result">합성 10만 건 <mark>17.3초</mark>. 재배포 후 기존 복구 로직이 작업을 이어받아 첫날 거래 115,270건 처리 완료</dd>
         </dl>
       </section>
     </div>
@@ -134,8 +138,8 @@
     <p class="one">자격증 기출 문제를 2~4명이 실시간으로 겨루며 푸는 웹 서비스</p>
     <dl class="facts">
       <dt>형태</dt><dd>개인, 배포 완료</dd>
-      <dt>맡은 일</dt><dd>기획과 결정, 클라우드 콘솔 설정, 검증, 병합</dd>
-      <dt>방식</dt><dd>주제별로 나눈 여러 AI 세션이 코드 작성</dd>
+      <dt>범위</dt><dd>매칭·대전 서버, 레이팅, 문제 은행, 로그인, 배포</dd>
+      <dt>개발</dt><dd>기획, 설계, 클라우드 설정, 부하 측정 설계와 검증. 구현은 AI 코딩 도구 활용</dd>
     </dl>
     <ul class="stack"><li>Node.js</li><li>Express</li><li>Socket.IO</li><li>Supabase</li><li>Cloudflare</li></ul>
   </aside>
@@ -143,27 +147,33 @@
     <p class="why">자격증 공부를 혼자 문제만 푸는 방식이 아니라, 실시간으로 매칭된 사람과 겨루면서 재미있게 하고 싶었습니다. 서버 한 대가 매칭, 출제, 채점, Elo 레이팅을 메모리에서 처리합니다.</p>
     <div class="log">
       <section class="entry">
-        <h4>부하 측정이 최신 코드로 돌지 않았다</h4>
+        <span class="topic">실시간 통신 · 부하 테스트</span>
+        <h4>동시 접속 1,146명에서 서버가 막혔다</h4>
         <dl>
-          <dt>문제</dt><dd>1차 측정 결과로 최적화를 시작하려던 참이었는데, 그 측정은 레이팅·리더보드가 들어가기 전 코드였습니다.</dd>
-          <dt class="me">판단</dt><dd>측정 대상부터 틀렸다고 보고 재측정을 요구했습니다. 전송량의 96.6%가 방 목록 방송이었고, 순위를 낼 때마다 전체 회원을 정렬하는 새 병목도 나왔습니다. 방송은 묶어서 로비에만 보내고 순위표는 캐시했습니다. WebSocket 압축은 CPU와 메모리가 늘어서 넣지 않았습니다.</dd>
-          <dt>결과</dt><dd class="result">전송량 <mark>약 63% 감소</mark>, 막히던 1,146명에서 <mark>1,400명까지 통과</mark>. 로컬 제한 환경 봇 테스트 기준이며 실서비스 수치는 아님</dd>
+          <dt>문제</dt><dd>무료 서버(CPU 0.1, 메모리 512MB) 조건에서 몇 명까지 버티는지 재 보니 400~800명 구간 p95가 최대 2.7초, 1,146명에서 접속이 막혔습니다.</dd>
+          <dt>원인</dt><dd>1차 측정은 레이팅·리더보드가 들어가기 전 코드여서 다시 쟀습니다. 재측정에서 전송량 1,199MB 중 96.6%가 방 목록 방송이었고, 순위를 낼 때마다 전체 회원을 훑어 정렬하는 새 병목이 나왔습니다.</dd>
+          <dt class="me">해결</dt><dd>방 목록은 1초, 접속자 수는 3초 단위로 묶어 로비에 있는 사람에게만 보내고, 순위표는 캐시해 순위전이 끝날 때만 다시 계산했습니다. WebSocket 압축은 전송량을 65% 줄였지만 CPU가 40% 늘고 메모리가 95MB에서 150~170MB로 늘어 넣지 않았습니다.</dd>
+          <dt>결과</dt><dd class="result">전송량 <mark>약 63% 감소</mark>, 1,400명 전원 접속(p95 0.4초 이하). 실서비스가 아니라 자원을 제한한 로컬 봇 테스트 수치</dd>
         </dl>
       </section>
       <section class="entry">
-        <h4>AI가 레이팅을 하나로 합치자고 했다</h4>
+        <span class="topic">저장소 선택</span>
+        <h4>무료 서버를 재시작하면 전적이 사라졌다</h4>
         <dl>
-          <dt>문제</dt><dd>두 대전 모드의 레이팅을 하나로 두자는 추천이 나왔습니다.</dd>
-          <dt class="me">판단</dt><dd>두 모드는 다른 영역이라고 보고 근거를 다시 물었습니다.</dd>
-          <dt>결과</dt><dd class="result">AI가 재검토 후 추천을 뒤집음. 대기열이 이미 모드별이라 나눠도 손해가 없고, 한 모드 레이팅으로 다른 모드 상대를 잡는 문제가 사라짐</dd>
+          <dt>문제</dt><dd>서버를 다시 띄울 때마다 디스크가 초기화되는 환경이었습니다.</dd>
+          <dt>원인</dt><dd>전적과 회원 정보를 서버 디스크에 두고 있었습니다.</dd>
+          <dt class="me">해결</dt><dd>Supabase(Postgres, 인증)로 옮겼습니다. 기간 제한이 있는 무료 Postgres, 카카오 로그인을 지원하지 않는 Firebase, 토큰·세션을 다 만들어야 하는 직접 OAuth는 비교 후 제외했습니다. 서버는 시작할 때 문제 은행과 회원 테이블을 메모리로 올리고 바뀐 행만 다시 씁니다.</dd>
+          <dt>결과</dt><dd class="result">Google·카카오 로그인과 모드별 Elo 레이팅 저장. 테스트 서버는 접근 제어 뒤에 두고 서버에서도 토큰 검증(없음·만료·위조 403)</dd>
         </dl>
       </section>
       <section class="entry">
-        <h4>실기 코드 문제를 빼려고 했다</h4>
+        <span class="topic">데이터 검증</span>
+        <h4>코드 문제의 정답을 어떻게 믿을까</h4>
         <dl>
-          <dt>문제</dt><dd>AI가 화면 표시가 어렵다며 실기의 코드·SQL 문제를 이번엔 빼겠다고 했습니다.</dd>
-          <dt class="me">판단</dt><dd>실제 시험 형식대로 보여 줘야 한다고 보고, 문제를 빼는 대신 화면 구현을 바꾸게 했습니다.</dd>
-          <dt>결과</dt><dd class="result">코드·그림 표시 추가. 코드 문제는 실제로 실행해 정답이 같은 것만 남기고, 의심 문항과 법 개정 문항은 사유를 남겨 제외</dd>
+          <dt>문제</dt><dd>실기 시험의 코드·SQL 문제는 화면 표시와 정답 검증이 어려워 빠질 뻔했습니다.</dd>
+          <dt>원인</dt><dd>텍스트만으로는 코드 문제의 정답이 맞는지 확인할 방법이 없었습니다.</dd>
+          <dt class="me">해결</dt><dd>화면에 코드와 그림을 표시하도록 바꾸고, 코드 문제는 실제로 실행해 정답과 결과가 같은 것만 남겼습니다. 출제 형식이 바뀐 회차와 법 개정 문항은 조사 후 사유를 남겨 제외했습니다.</dd>
+          <dt>결과</dt><dd class="result">코드 문제 155개 수록, 18개 문제 은행 16,954문항</dd>
         </dl>
       </section>
     </div>
@@ -182,8 +192,8 @@
     <p class="one">항해 게임에서 배 7척, 최대 77명의 배치를 찾아 주는 도구와, 화면을 인식해 도착을 알려 주는 브라우저 앱</p>
     <dl class="facts">
       <dt>형태</dt><dd>개인, GitHub Pages로 운영 중</dd>
-      <dt>맡은 일</dt><dd>기능 범위와 사양, 기준값, 머지 결정, 실제 플레이로 검증</dd>
-      <dt>방식</dt><dd>코드는 AI 작성. 외부 패키지 없이 브라우저만으로</dd>
+      <dt>범위</dt><dd>배치 탐색기, 화면 인식 알림, 서버 없는 배포</dd>
+      <dt>개발</dt><dd>사양과 기준값 결정, 실제 플레이로 재현·검증. 구현은 AI 코딩 도구 활용</dd>
     </dl>
     <ul class="stack"><li>JavaScript</li><li>Web Worker</li><li>Screen Capture API</li><li>OffscreenCanvas</li><li>GitHub Actions</li></ul>
   </aside>
@@ -191,27 +201,33 @@
     <p class="why">사람마다 효과가 4~5개라 손으로 최적 조합을 찾기 어려웠고, 게임에 도착 알림이 없어 배를 보내 놓고 도착을 놓치는 일이 잦았습니다. 서버 없이 되는지부터 확인하고 브라우저 안에서 화면을 캡처하는 방식으로 정했습니다.</p>
     <div class="log">
       <section class="entry">
+        <span class="topic">이미지 매칭</span>
         <h4>도착이 아닌 화면을 도착으로 잡았다</h4>
         <dl>
-          <dt>문제</dt><dd>세계지도, 채팅, 출항 로딩창 등이 도착 화면으로 잡혔습니다. 출항 로딩창은 도착 화면과 글꼴과 배치가 같았습니다.</dd>
-          <dt class="me">판단</dt><dd>오탐이 날 때마다 스크린샷으로 제보하고, 창 크기와 UI 배율별 샘플 42장을 모았습니다. 임계값을 올리는 대신 닮은꼴 템플릿을 두고 그쪽 점수가 더 높으면 감점하게 했고, 기본 임계값 0.8을 정했습니다.</dd>
-          <dt>결과</dt><dd class="result">도착 샘플 0.83~1.00, 비도착 0.62 이하, <mark>출항 화면 0.00</mark>. 검사 1회 30~60ms</dd>
+          <dt>문제</dt><dd>세계지도, 채팅, 출항 로딩창 등이 도착 화면으로 감지됐습니다.</dd>
+          <dt>원인</dt><dd>템플릿에 다른 화면과 겹치는 공용 아이콘이 섞여 있었고, 출항 로딩창은 도착 화면과 글꼴·배치가 같아 일치율이 0.53~0.59였습니다.</dd>
+          <dt class="me">해결</dt><dd>임계값을 올리는 대신 출항 화면을 닮은꼴(음성) 템플릿으로 두고 그쪽 점수가 더 높으면 감점했습니다. 검사 위치를 화면 좌상단으로 제한하고, UI 배율 차이 때문에 템플릿을 배율별 5종으로 나눴습니다. 창 크기·배율별 샘플 42장으로 기본 임계값 0.8을 정했습니다.</dd>
+          <dt>결과</dt><dd class="result">도착 0.83~1.00, 비도착 0.62 이하, <mark>출항 화면 0.00</mark>. 검사 1회 30~60ms</dd>
         </dl>
       </section>
       <section class="entry">
-        <h4>AI가 스탯을 1레벨 기준으로 비교하자고 했다</h4>
+        <span class="topic">탐색 알고리즘</span>
+        <h4>목표 14개 중 13개에서 탐색이 멈췄다</h4>
         <dl>
-          <dt>문제</dt><dd>최대 인원 모드에서 캐릭터를 비교할 기준이 필요했습니다.</dd>
-          <dt class="me">판단</dt><dd>훈련을 끝내면 최종 스탯은 같아지고 한 캐릭터 안의 스탯 비율만 유지된다는 점을 근거로 거절했습니다. 이동 규칙을 덧붙이는 대신 알고리즘 단계부터 다시 설계하게 했습니다.</dd>
-          <dt>결과</dt><dd class="result">캐릭터별 자기 최고 스탯 대비 비율로 비교하고, 구성 단계를 비용 모델로 재설계</dd>
+          <dt>문제</dt><dd>실제 설정 파일로 돌리면 마지막 목표 하나를 끝내 채우지 못했습니다.</dd>
+          <dt>원인</dt><dd>필요한 효과를 가진 사람이 이미 다른 배에 앉아 있어서, 1:1 교체만으로는 옮길 수 없었습니다.</dd>
+          <dt class="me">해결</dt><dd>보유자를 부족한 배로 옮기고 빈 자리를 다시 채우는 재배치 이동을 추가했습니다. 스탯 비교는 레벨에 따라 바뀌는 절대값 대신 캐릭터별 최고 스탯 대비 비율로 바꿨습니다.</dd>
+          <dt>결과</dt><dd class="result">같은 파일에서 10초 탐색으로 <mark>14/14 달성</mark>, 필요 인원 77명 → 69~71명</dd>
         </dl>
       </section>
       <section class="entry">
+        <span class="topic">검증</span>
         <h4>최적해를 보장하지 않는 탐색을 어떻게 믿을까</h4>
         <dl>
-          <dt>문제</dt><dd>10초 제한 탐색은 최적해를 보장하지 않습니다.</dd>
-          <dt class="me">판단</dt><dd>실제 배치 파일과 변형 3개를 정수계획법(MILP)으로 정확히 풀어 대조하기로 했습니다.</dd>
-          <dt>결과</dt><dd class="result"><mark>4건 모두 최적값과 일치</mark>. 화면에는 최적해를 보장하지 않는다고 표시</dd>
+          <dt>문제</dt><dd>10초 제한 휴리스틱 탐색은 최적해를 보장하지 않습니다.</dd>
+          <dt>원인</dt><dd>탐색 결과와 비교할 정답이 없었습니다.</dd>
+          <dt class="me">해결</dt><dd>실제 배치 파일(보유 608명, 목표 23개, 76석)과 변형 3개를 정수계획법(MILP)으로 정확히 풀어 대조했습니다. 상태 120~240건 무작위 퍼징으로 중복 승선·정원 초과도 검사했습니다.</dd>
+          <dt>결과</dt><dd class="result"><mark>4건 모두 최적값과 일치</mark>, 퍼징 위반 0건</dd>
         </dl>
       </section>
     </div>
@@ -230,8 +246,8 @@
     <p class="one">게임 속 주간 기록 데이터를 쌓아 어종별 활성도와 미끼·수역 정보를 보여 주는 웹 서비스</p>
     <dl class="facts">
       <dt>형태</dt><dd>개인, 1인 개발·운영</dd>
-      <dt>맡은 일</dt><dd>제품 범위, 설계 결정 56건 기록, 검토, 운영</dd>
-      <dt>방식</dt><dd>구현 담당과 검수 담당으로 나눈 AI 에이전트가 코드 작성</dd>
+      <dt>범위</dt><dd>데이터 적재, 활성도 모델, 대시보드, 회원·라벨 기능, 운영</dd>
+      <dt>개발</dt><dd>설계 결정 56건 기록, 검토, 운영. 구현은 AI 코딩 도구 활용</dd>
     </dl>
     <ul class="stack"><li>Python</li><li>FastAPI</li><li>SQLite</li><li>RandomForest</li><li>Cloudflare Tunnel</li></ul>
   </aside>
@@ -239,27 +255,33 @@
     <p class="why">잘 잡히는 지점과 미끼가 계속 바뀌는데 기록은 주간 순위로만 볼 수 있었습니다. 게임에 들어가자마자 오늘 뭘 잡을지 5분 안에 정하게 하는 걸 목표로, 전체 기록 조회 대신 선호 어종 대시보드로 범위를 좁혔습니다.</p>
     <div class="log">
       <section class="entry">
+        <span class="topic">모델 선택 · 경량 추론</span>
         <h4>임시 공식이 어종마다 맞지 않았다</h4>
         <dl>
-          <dt>문제</dt><dd>기록 수와 일관성으로 만든 선형 공식은 어종마다 희귀도와 기록 규모가 달라 맞지 않았습니다.</dd>
-          <dt class="me">판단</dt><dd>라벨 381건을 모아 모델을 비교했습니다. 운영 기기인 안드로이드 태블릿에는 scikit-learn을 설치할 수 없어서, 트리를 JSON으로 내보내 표준 라이브러리만으로 추론할 수 있는 RandomForest를 골랐습니다.</dd>
+          <dt>문제</dt><dd>기록 수와 일관성으로 만든 선형 공식으로 활성도를 매겼더니 어종마다 결과가 들쭉날쭉했습니다.</dd>
+          <dt>원인</dt><dd>어종마다 희귀도와 기록 규모가 달라 하나의 고정 임계값으로는 맞출 수 없었습니다.</dd>
+          <dt class="me">해결</dt><dd>라벨 381건을 모아 모델을 비교했습니다. 운영 기기인 안드로이드 태블릿에는 scikit-learn을 설치할 수 없어, 트리를 JSON으로 내보내 표준 라이브러리만으로 추론할 수 있는 RandomForest를 골랐습니다. 점수는 단계별 확률의 기댓값으로 계산해 단계와 점수가 뒤집히지 않게 했습니다.</dd>
           <dt>결과</dt><dd class="result">다수 클래스 33%, 로지스틱 회귀 61%, <mark>RandomForest 64%</mark> (라벨 평가 기준). 학습은 PC, 추론은 태블릿</dd>
         </dl>
       </section>
       <section class="entry">
+        <span class="topic">데이터 정합성</span>
         <h4>시간 필터를 바꿔도 결과가 같았다</h4>
         <dl>
-          <dt>문제</dt><dd>6시간과 24시간 탭의 결과가 같았습니다. 저장 시각과 SQLite 비교의 구분자 형식이 달라 문자열 비교가 깨져 있었습니다.</dd>
-          <dt class="me">판단</dt><dd>쿼리에 변환을 덧씌우는 땜질 대신 저장 형식을 통일하고 과거 데이터를 한 번 정리하기로 했습니다.</dd>
+          <dt>문제</dt><dd>6시간과 24시간 탭의 결과가 같았습니다.</dd>
+          <dt>원인</dt><dd>저장 시각은 T 구분자, SQLite 비교는 공백 구분자를 써서 문자열 비교가 깨져 있었습니다.</dd>
+          <dt class="me">해결</dt><dd>쿼리마다 변환을 덧씌우는 대신 저장 형식을 통일하고 과거 데이터를 한 번 정리했습니다.</dd>
           <dt>결과</dt><dd class="result">실제 DB 약 8.8만 건으로 두 탭이 갈리는 것 확인, 회귀 테스트 추가</dd>
         </dl>
       </section>
       <section class="entry">
-        <h4>이미 넘긴 닉네임 구현을 되돌렸다</h4>
+        <span class="topic">캐싱</span>
+        <h4>대시보드 요청마다 활성도를 다시 계산했다</h4>
         <dl>
-          <dt>문제</dt><dd>리더보드 닉네임을 기존 아이디에서 복사하게 했는데, 아이디에는 이메일 형태도 허용돼 있었습니다.</dd>
-          <dt class="me">판단</dt><dd>기존 사용자는 아이디가 공개될 줄 모르고 정했으니 개인정보 문제가 된다고 보고 구현을 되돌렸습니다.</dd>
-          <dt>결과</dt><dd class="result">닉네임은 빈 값으로 시작하고, 직접 등록한 사람만 리더보드에 표시</dd>
+          <dt>문제</dt><dd>데이터는 15분마다 바뀌는데 요청이 올 때마다 전 어종 점수를 다시 계산하고 있었습니다.</dd>
+          <dt>원인</dt><dd>계산 시점이 데이터 갱신 주기와 맞지 않았습니다.</dd>
+          <dt class="me">해결</dt><dd>요청 시점 캐시 대신 데이터가 들어온 직후 전 어종을 미리 계산하게 했습니다. 결과는 새 객체에 다 만든 뒤 한 번에 교체하고, 실패하면 즉석 계산으로 넘어갑니다. 최대 15분 묵은 점수는 감수했습니다.</dd>
+          <dt>결과</dt><dd class="result">251종 × 2개 시간창, 24시간 데이터 19,367건 기준 <mark>0.42초</mark>(PC 측정)</dd>
         </dl>
       </section>
     </div>
@@ -299,14 +321,14 @@
 <div class="sec-head" id="skills">
   <h2>써 본 기술</h2>
 </div>
-<p class="note">프로젝트에서 실제로 쓴 것만 적었습니다. AI가 코드를 쓴 프로젝트에서는 기술 선택과 검증을 맡았습니다.</p>
+<p class="note">프로젝트에서 실제로 쓴 것만 적었습니다.</p>
 <dl class="tech">
   <dt>백엔드</dt><dd>Java·Spring Boot, PostgreSQL, Python·FastAPI, SQLite, Node.js·Socket.IO, Flask</dd>
   <dt>프론트</dt><dd>JavaScript, Web Worker, 화면 캡처·Canvas API</dd>
   <dt>데이터</dt><dd>분류 모델 비교(scikit-learn), LightGBM</dd>
   <dt>배포</dt><dd>GitHub Pages·Actions, Supabase, Cloudflare</dd>
   <dt>기초</dt><dd>C, 아두이노</dd>
-  <dt>AI 협업</dt><dd>Claude Code, Codex. 역할별 에이전트 분리, 규칙 문서와 훅으로 작업 범위 제한, 검수 결과 교차 확인</dd>
+  <dt>도구</dt><dd>Git·GitHub Actions, Docker 기반 테스트(Testcontainers), Claude Code·Codex</dd>
   <dt>교육</dt><dd>AI 개발자 양성 과정 (2026.05 ~ 12, 진행 중)</dd>
 </dl>
 
