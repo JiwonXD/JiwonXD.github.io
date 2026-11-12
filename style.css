@@ -66,7 +66,7 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .hero h1 { margin: 0; font-size: clamp(21px, 2.6vw, 27px); line-height: 1.5; font-weight: 700; letter-spacing: -.01em; text-wrap: balance; }
 .hero mark { background: none; color: var(--blue); }
 .hero-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 20px; }
-.pill-btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 16px; border-radius: 8px; background: var(--blue); color: #fff; font-size: 14px; font-weight: 600; box-shadow: 0 4px 12px rgba(47, 111, 228, .28); transition: background .15s; }
+.pill-btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 9px 16px; border-radius: 8px; background: var(--blue); color: #fff; font-size: 14px; font-weight: 600; box-shadow: 0 4px 12px rgba(47, 111, 228, .28); transition: background .15s; }
 .pill-btn:hover { background: var(--blue-deep); }
 .pill-btn.ghost { border: 0; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; background: var(--bg); color: var(--blue-deep); box-shadow: 0 2px 8px rgba(26, 35, 51, .08); }
 .pill-btn.ghost:hover { background: var(--blue-soft); }
