@@ -8,7 +8,7 @@
 <meta property="og:title" content="JIWON PARK | Portfolio">
 <meta property="og:description" content="백엔드 개발자 박지원 포트폴리오">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="style.css?v=20261113">
+<link rel="stylesheet" href="style.css?v=20261113b">
 </head>
 <body>
 
@@ -272,7 +272,7 @@
       <h2>함께 이야기 나눠요</h2>
       <div class="hero-btns">
         <a class="pill-btn" href="https://github.com/JiwonXD"><svg><use href="#i-github"/></svg>GitHub</a>
-        <a class="pill-btn ghost" href="mailto:ppjw017@gmail.com"><svg><use href="#i-mail"/></svg>ppjw017@gmail.com</a>
+        <button type="button" class="pill-btn ghost" id="copy-mail" data-mail="ppjw017@gmail.com"><svg><use href="#i-mail"/></svg><span>ppjw017@gmail.com</span></button>
       </div>
     </div>
   </div>
@@ -514,6 +514,21 @@
   }), { rootMargin: '-45% 0px -50% 0px' });
   ['about', 'career', 'skill', 'project', 'activity'].forEach(id => io.observe(document.getElementById(id)));
 
+  // 하단 메일 주소 복사
+  const mailBtn = document.getElementById('copy-mail');
+  mailBtn.addEventListener('click', async () => {
+    const mail = mailBtn.dataset.mail, label = mailBtn.querySelector('span');
+    try {
+      await navigator.clipboard.writeText(mail);
+    } catch {
+      const t = document.createElement('textarea');
+      t.value = mail; document.body.append(t); t.select(); document.execCommand('copy'); t.remove();
+    }
+    mailBtn.style.minWidth = mailBtn.offsetWidth + 'px';
+    label.textContent = '복사됨';
+    clearTimeout(mailBtn.timer);
+    mailBtn.timer = setTimeout(() => label.textContent = mail, 1500);
+  });
   // GitHub 기여 그래프
   (async () => {
     const user = 'JiwonXD';
