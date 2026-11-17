@@ -116,7 +116,6 @@
         <ul class="dated">
           <li><time>2026.11 ~ 운영 중</time><span>AI 에이전트용 캘린더</span></li>
           <li><time>2026.11</time><span>선박 최적 항로 탐색</span></li>
-          <li><time>2026.10 ~ 운영 중</time><span>스포츠 구단 모의 거래소</span></li>
           <li><time>2026.10 ~ 운영 중</time><span>자격증 실시간 퀴즈 대전</span></li>
           <li><time>2026.09 ~ 운영 중</time><span>항해 게임 도우미</span></li>
           <li><time>2026.06 ~ 운영 중</time><span>낚시 게임 입질 모니터링</span></li>
@@ -143,7 +142,7 @@
       <article class="box skill">
         <h3>Backend</h3>
         <ul class="logos">
-          <li data-tip="자금세탁 모니터링, 모의 거래소" tabindex="0"><img src="assets/icons/spring.svg" alt="">Spring Boot</li>
+          <li data-tip="자금세탁 모니터링" tabindex="0"><img src="assets/icons/spring.svg" alt="">Spring Boot</li>
           <li data-tip="퀴즈 대전, AI 에이전트용 캘린더" tabindex="0"><img src="assets/icons/nodejs.svg" alt="">Node.js</li>
           <li data-tip="입질 모니터링" tabindex="0"><img src="assets/icons/fastapi.svg" alt="">FastAPI</li>
           <li data-tip="식당 예약" tabindex="0"><img src="assets/icons/flask.svg" alt="">Flask</li>
@@ -222,18 +221,6 @@
         <div class="pcol"><h4><svg><use href="#i-users"/></svg>개발 인원</h4><p>개인</p></div>
         <div class="pcol"><h4><svg><use href="#i-cal"/></svg>개발 기간</h4><p>2026.11</p></div>
         <button class="more" type="button" data-open="d-route" aria-label="자세히 보기"><svg><use href="#i-arrow"/></svg></button>
-      </article>
-
-      <article class="pcard prow">
-        <div class="cover c6"><svg><use href="#i-swap"/></svg></div>
-        <div class="pmain">
-          <div class="ptitle"><h3>스포츠 구단 모의 거래소</h3><span class="ai" tabindex="0" data-tip="구현에 AI 코딩 도구 활용"><svg><use href="#i-cpu"/></svg></span></div>
-          <p class="pdesc">유저끼리 호가창에서 매매하는 포인트 기반 거래소</p>
-          <div class="pkpi"><span>같은 부하에서 서버 CPU</span><strong>73% → 42%</strong><i class="tip" tabindex="0" data-tip="봇 300개, 4 vCPU 컨테이너 한 대에 서버와 DB, 부하 발생기를 함께 올린 환경의 전후 비교"><svg><use href="#i-info"/></svg></i></div>
-        </div>
-        <div class="pcol"><h4><svg><use href="#i-users"/></svg>개발 인원</h4><p>개인</p></div>
-        <div class="pcol"><h4><svg><use href="#i-cal"/></svg>개발 기간</h4><p>2026.10 ~ 운영 중</p></div>
-        <button class="more" type="button" data-open="d-ex" aria-label="자세히 보기"><svg><use href="#i-arrow"/></svg></button>
       </article>
 
       <article class="pcard prow">
@@ -418,53 +405,6 @@
         <dt>원인</dt><dd>실패한 요청 기록이 재개와 초기화를 막음</dd>
         <dt>해결</dt><dd>실패한 모델만 준비된 입력으로 새 회차 재전송</dd>
         <dt>결과</dt><dd><em>강제 종료 시험 결과 동일</em>, dev 작업 2회차 완료</dd>
-      </dl>
-    </section>
-  </div>
-</dialog>
-
-<dialog id="d-ex" class="modal">
-  <div class="mhead">
-    <div><h3>스포츠 구단 모의 거래소</h3><p>2026.10 ~ 운영 중 / 개인</p></div>
-    <button type="button" class="close" aria-label="닫기"><svg><use href="#i-x"/></svg></button>
-  </div>
-  <div class="mintro">
-    <p class="kicker">개인 프로젝트</p>
-    <p class="lead">스포츠 구단을 종목처럼 사고파는 포인트 기반 모의 거래소. 유저끼리 호가창에서 매매</p>
-  </div>
-  <div class="minfo">
-    <div><h5>핵심 기능</h5><ul class="feat"><li>가격과 시간 우선 매칭, 지정가와 시장가</li><li>복식부기 원장과 5분 주기 자동 대사</li><li>WebSocket 실시간 시세</li><li>공모, 배당, 리더보드, 이상거래 탐지</li></ul></div>
-    <div class="mine"><h5>맡은 부분</h5><ul><li><b>설계</b>버린 대안까지 설계 결정 기록 41건</li><li><b>검증</b>장애와 동시 요청 테스트, CI 검사 6종</li><li><b>측정</b>부하 측정과 병목 판단</li><li><b>운영</b>Docker Compose 배포</li></ul></div>
-  </div>
-  <ul class="stack"><li>Spring Boot</li><li>MySQL 8.4</li><li>Flyway</li><li>WebSocket</li><li>React</li><li>Prometheus</li><li>Docker Compose</li><li>Playwright</li></ul>
-  <h4 class="mcases">문제 해결과 설계</h4>
-  <div class="cases">
-    <section class="case">
-      <h4>사용자가 늘면 어디가 먼저 막히는가</h4>
-      <ol class="trail">
-        <li class="s-sym"><b>증상</b><span>주문 50명 부하에서 p99 1초 안팎, 화면처럼 움직이는 봇 600개에서 모든 요청 2초</span></li>
-        <li class="s-no"><b>배제</b><span>매칭 엔진. 매칭은 0.1ms 미만</span></li>
-        <li class="s-yes"><b>원인</b><span>주문당 DB 트랜잭션 두 번이 처리 시간 22.5ms의 90% 이상</span></li>
-        <li class="s-no"><b>배제</b><span>연결 풀 크기</span></li>
-        <li class="s-yes"><b>원인</b><span>체결 표 전체를 훑는 조회, 요청마다 다시 만드는 순위. 서버 CPU의 70%는 요청 한 건마다 드는 공통 처리</span></li>
-        <li class="s-fix"><b>해결</b><span>트랜잭션당 DB 왕복 축소, 인덱스 조인, 순위 5초 캐시, 3초마다 보내던 요청 11건을 1건으로</span></li>
-        <li class="s-res"><b>결과</b><span><em>주문 처리량 약 25% 증가, 조회 32,859행 → 29행, CPU 73% → 42%</em> (4 vCPU 한 대, 전후 비교)</span></li>
-      </ol>
-    </section>
-    <section class="case">
-      <h4>재시도한 주문이 두 번 체결될 위험</h4>
-      <dl>
-        <dt>위험</dt><dd>응답을 못 받은 주문의 재요청과 새 주문을 서버가 구별할 근거 없음</dd>
-        <dt>설계</dt><dd>주문마다 클라이언트 주문 번호, 계정과 번호에 유일 제약. 같은 번호는 저장된 결과 반환</dd>
-        <dt>검증</dt><dd><em>8스레드 동시 재시도에 주문 1건</em>. 강제 종료 시험 1,736건 중 미응답 28건 재시도, 중복 0건</dd>
-      </dl>
-    </section>
-    <section class="case">
-      <h4>잔고가 틀어져도 알 방법이 없음</h4>
-      <dl>
-        <dt>위험</dt><dd>잔고 테이블은 현재 값만 보유, 변경 근거 없음</dd>
-        <dt>설계</dt><dd>모든 이동을 같은 트랜잭션에서 복식부기 전표로 기록, 5분마다 대사와 경보</dd>
-        <dt>검증</dt><dd><em>잔고 7P 변조 즉시 탐지</em>, 전표 3,051장 뒤 대사 일치</dd>
       </dl>
     </section>
   </div>
