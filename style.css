@@ -284,3 +284,4 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
   .pcol { width: auto; flex: 1; padding-left: 0; border-left: 0; }
 }
 .prow .cover svg.wide { width: 44px; height: 44px; opacity: 1; stroke-width: 1.6; }
+.prow .cover img { width: 100%; height: 100%; display: block; border-radius: 10px; }
