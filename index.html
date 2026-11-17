@@ -544,7 +544,7 @@
     <div class="mlinks"><a class="lbtn live" href="https://rf4trends.com" target="_blank" rel="noopener">라이브 보기<svg><use href="#i-ext"/></svg></a></div>
   </div>
   <div class="minfo">
-    <div><h5>구현</h5><ul class="feat"><li>15분마다 공식 주간기록을 모아 SQLite에 저장하고 어종별 활성도와 미끼, 수역 점유율을 집계</li><li>이용자 제보로 활성도 판정 모델을 학습하고, 모델을 JSON으로 내보내 태블릿에서 추가 설치 없이 판정</li><li>서버는 태블릿 한 대, Cloudflare Tunnel로 외부에 공개</li></ul></div>
+    <div><h5>구현</h5><ul class="feat"><li>15분마다 공식 주간기록을 모아 SQLite에 저장하고 어종별 활성도와 미끼, 수역 점유율을 집계</li><li>활성 판정은 "트로피 기록의 70% 이상" 같은 고정 기준을 버리고, 수집한 기록 전체를 대상으로 어종을 입력에 넣어 어종별 기준을 모델이 학습</li><li>활성 단계는 비활성, 불명, 활성, 강한 활성의 순서 있는 4단계로 분류하고, 점수는 단계별 확률을 가중한 기댓값으로 계산해 단계와 점수가 어긋나지 않게 함</li><li>이용자 제보로 활성도 판정 모델을 학습하고, 모델을 JSON으로 내보내 태블릿에서 추가 설치 없이 판정</li><li>서버는 태블릿 한 대, Cloudflare Tunnel로 외부에 공개</li></ul></div>
     <div class="mine"><h5>맡은 부분</h5><ul><li><b>기획</b>개인화 대시보드로 범위 결정</li><li><b>데이터</b>활성도 라벨링, 모델 비교</li><li><b>설계</b>수집기 분리, 태블릿 추론 구조</li><li><b>운영</b>태블릿 서버, Cloudflare Tunnel</li></ul></div>
   </div>
   <ul class="stack"><li>Python</li><li>FastAPI</li><li>SQLite</li><li>scikit-learn</li><li>Cloudflare Tunnel</li></ul>
