@@ -7,8 +7,10 @@
 <meta name="description" content="백엔드 개발자 박지원 포트폴리오">
 <meta property="og:title" content="JIWON PARK | Portfolio">
 <meta property="og:description" content="백엔드 개발자 박지원 포트폴리오">
+<meta property="og:image" content="https://jiwonxd.github.io/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="style.css?v=20261115a">
+<link rel="stylesheet" href="style.css?v=20261117d">
 </head>
 <body>
 
@@ -27,6 +29,7 @@
     <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
     <symbol id="i-grad" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></symbol>
     <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+    <symbol id="i-graph" viewBox="0 0 24 24"><path d="M5.0 4.8 8.7 5.8M9.4 7.4 6.8 11.3M7.6 13.7 11.1 14.8M14.2 14.3 17.2 11.8M19.3 8.7 20.3 5.0M14.0 16.8 16.4 19.7M5.1 15.0 3.9 19.1"/><circle cx="3.4" cy="4.4" r="1.7"/><circle cx="10.2" cy="6.2" r="1.5"/><circle cx="5.6" cy="13" r="2.1"/><circle cx="12.8" cy="15.4" r="1.8"/><circle cx="18.8" cy="10.6" r="2.0"/><circle cx="20.6" cy="3.6" r="1.4"/><circle cx="17.4" cy="20.8" r="1.5"/><circle cx="3.6" cy="20.4" r="1.3"/></symbol>
     <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></symbol>
     <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></symbol>
     <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
@@ -113,7 +116,6 @@
         <ul class="dated">
           <li><time>2026.11 ~ 운영 중</time><span>AI 에이전트용 캘린더</span></li>
           <li><time>2026.11</time><span>선박 최적 항로 탐색</span></li>
-          <li><time>2026.10 ~ 운영 중</time><span>스포츠 구단 모의 거래소</span></li>
           <li><time>2026.10 ~ 운영 중</time><span>자격증 실시간 퀴즈 대전</span></li>
           <li><time>2026.09 ~ 운영 중</time><span>항해 게임 도우미</span></li>
           <li><time>2026.06 ~ 운영 중</time><span>낚시 게임 입질 모니터링</span></li>
@@ -140,7 +142,7 @@
       <article class="box skill">
         <h3>Backend</h3>
         <ul class="logos">
-          <li data-tip="자금세탁 모니터링, 모의 거래소" tabindex="0"><img src="assets/icons/spring.svg" alt="">Spring Boot</li>
+          <li data-tip="자금세탁 모니터링" tabindex="0"><img src="assets/icons/spring.svg" alt="">Spring Boot</li>
           <li data-tip="퀴즈 대전, AI 에이전트용 캘린더" tabindex="0"><img src="assets/icons/nodejs.svg" alt="">Node.js</li>
           <li data-tip="입질 모니터링" tabindex="0"><img src="assets/icons/fastapi.svg" alt="">FastAPI</li>
           <li data-tip="식당 예약" tabindex="0"><img src="assets/icons/flask.svg" alt="">Flask</li>
@@ -173,137 +175,88 @@
     <h2 class="sec-title" data-ghost="PROJECT">PROJECT</h2>
     <div class="project-grid">
 
-      <article class="pcard">
-        <div class="cover c5">
-          <svg><use href="#i-shield"/></svg>
-          <strong>에이전트 안전장치</strong>
-        </div>
-        <div class="pbody">
-          <div class="ptitle"><h3>AI 에이전트용 캘린더</h3><span class="ai" tabindex="0" data-tip="구현에 AI 코딩 도구 활용"><svg><use href="#i-cpu"/></svg></span></div>
-          <p class="pdesc">AI 에이전트가 일정을 고쳐도 안전한 캘린더</p>
-          <div class="pkpi"><span>일정 조회 쿼리</span><strong>153ms → 4~6ms</strong><i class="tip" tabindex="0" data-tip="운영 서비스 실측, 서버 지역 이전 전후"><svg><use href="#i-info"/></svg></i></div>
-          <ul class="pmeta">
-            <li><svg><use href="#i-cal"/></svg>기간 : 2026.11 ~ 운영 중</li>
-            <li><svg><use href="#i-users"/></svg>팀 구성 : 개인</li>
-            <li><svg><use href="#i-laptop"/></svg>역할 : 기획, 설계 결정, 검증, 운영</li>
-          </ul>
-          <ul class="roles"><li>MCP 서버</li><li>OAuth 2.1</li><li>승인과 되돌리기</li><li>배포</li></ul>
-          <button class="more" type="button" data-open="d-cal">자세히 보기<svg><use href="#i-arrow"/></svg></button>
-        </div>
-      </article>
-
-      <article class="pcard">
-        <div class="cover c1">
-          <svg><use href="#i-db"/></svg>
-          <strong>일별 거래 분석 백엔드</strong>
-        </div>
-        <div class="pbody">
+      <article class="pcard prow">
+        <div class="cover c1"><svg class="wide"><use href="#i-graph"/></svg></div>
+        <div class="pmain">
           <div class="ptitle"><h3>자금세탁 모니터링</h3><span class="ai" tabindex="0" data-tip="구현에 AI 코딩 도구 활용"><svg><use href="#i-cpu"/></svg></span></div>
           <p class="pdesc">여러 은행 거래를 일 단위로 분석하는 모니터링 서비스</p>
           <div class="pkpi"><span>그래프 생성</span><strong>건당 0.14s → 0.5ms</strong><i class="tip" tabindex="0" data-tip="로컬 CPU, 데모 하루치 11.5만 건, 1회 측정"><svg><use href="#i-info"/></svg></i></div>
-          <ul class="pmeta">
-            <li><svg><use href="#i-cal"/></svg>기간 : 2026.08 ~ 진행 중</li>
-            <li><svg><use href="#i-users"/></svg>팀 구성 : 5인</li>
-            <li><svg><use href="#i-laptop"/></svg>역할 : 설계, Backend, QA</li>
-          </ul>
-          <ul class="roles"><li>BE 개발</li><li>일별 분석 파이프라인</li><li>DB 설계</li><li>QA</li></ul>
-          <button class="more" type="button" data-open="d-aml">자세히 보기<svg><use href="#i-arrow"/></svg></button>
         </div>
+        <div class="pcol"><h4><svg><use href="#i-users"/></svg>개발 인원</h4><p>5인 팀</p></div>
+        <div class="pcol"><h4><svg><use href="#i-cal"/></svg>개발 기간</h4><p>2026.08 ~ 진행 중</p></div>
+        <button class="more" type="button" data-open="d-aml" aria-label="자세히 보기"><svg><use href="#i-arrow"/></svg></button>
       </article>
 
-      <article class="pcard">
-        <div class="cover c6">
-          <svg><use href="#i-swap"/></svg>
-          <strong>주문 체결과 원장</strong>
+      <article class="pcard prow">
+        <div class="cover c8"><svg><use href="#i-code"/></svg></div>
+        <div class="pmain">
+          <div class="ptitle"><h3>리눅스 명령어 C 구현</h3></div>
+          <p class="pdesc">리눅스 핵심 명령어를 C로 구현해 하나의 셸로 묶은 프로젝트</p>
+          <div class="pkpi"><span>하나의 셸로 통합</span><strong>명령어 12개</strong><i class="tip" tabindex="0" data-tip="ls, cat, cd, grep, find, mkdir, rm, cp 등과 옵션"><svg><use href="#i-info"/></svg></i></div>
         </div>
-        <div class="pbody">
-          <div class="ptitle"><h3>스포츠 구단 모의 거래소</h3><span class="ai" tabindex="0" data-tip="구현에 AI 코딩 도구 활용"><svg><use href="#i-cpu"/></svg></span></div>
-          <p class="pdesc">유저끼리 호가창에서 매매하는 포인트 기반 거래소</p>
-          <div class="pkpi"><span>같은 부하에서 서버 CPU</span><strong>73% → 42%</strong><i class="tip" tabindex="0" data-tip="봇 300개, 4 vCPU 컨테이너 한 대에 서버와 DB, 부하 발생기를 함께 올린 환경의 전후 비교"><svg><use href="#i-info"/></svg></i></div>
-          <ul class="pmeta">
-            <li><svg><use href="#i-cal"/></svg>기간 : 2026.10 ~ 운영 중</li>
-            <li><svg><use href="#i-users"/></svg>팀 구성 : 개인</li>
-            <li><svg><use href="#i-laptop"/></svg>역할 : 설계 결정, 검증, 측정, 운영</li>
-          </ul>
-          <ul class="roles"><li>매칭 엔진</li><li>멱등 주문</li><li>원장과 대사</li><li>부하 측정</li></ul>
-          <button class="more" type="button" data-open="d-ex">자세히 보기<svg><use href="#i-arrow"/></svg></button>
-        </div>
+        <div class="pcol"><h4><svg><use href="#i-users"/></svg>개발 인원</h4><p>5인 팀</p></div>
+        <div class="pcol"><h4><svg><use href="#i-cal"/></svg>개발 기간</h4><p>2025.05 ~ 2025.06</p></div>
+        <button class="more" type="button" data-open="d-linux" aria-label="자세히 보기"><svg><use href="#i-arrow"/></svg></button>
       </article>
 
-      <article class="pcard">
-        <div class="cover c2">
-          <svg><use href="#i-bolt"/></svg>
-          <strong>실시간 대전 서버</strong>
+      <article class="pcard prow">
+        <div class="cover"><img src="assets/calendar_icon.png" alt=""></div>
+        <div class="pmain">
+          <div class="ptitle"><h3>AI 에이전트용 캘린더</h3><span class="ai" tabindex="0" data-tip="구현에 AI 코딩 도구 활용"><svg><use href="#i-cpu"/></svg></span></div>
+          <p class="pdesc">AI 에이전트가 일정을 고쳐도 안전한 캘린더</p>
+          <div class="pkpi"><span>같은 요청을 다시 보내도</span><strong>일정 1개</strong><i class="tip" tabindex="0" data-tip="재시도 방지 키로 같은 요청은 한 번만 처리"><svg><use href="#i-info"/></svg></i></div>
         </div>
-        <div class="pbody">
+        <div class="pcol"><h4><svg><use href="#i-users"/></svg>개발 인원</h4><p>개인</p></div>
+        <div class="pcol"><h4><svg><use href="#i-cal"/></svg>개발 기간</h4><p>2026.11 ~ 운영 중</p></div>
+        <button class="more" type="button" data-open="d-cal" aria-label="자세히 보기"><svg><use href="#i-arrow"/></svg></button>
+      </article>
+
+      <article class="pcard prow">
+        <div class="cover"><img src="assets/quiz_icon.png" alt=""></div>
+        <div class="pmain">
           <div class="ptitle"><h3>자격증 퀴즈 대전</h3><span class="ai" tabindex="0" data-tip="구현에 AI 코딩 도구 활용"><svg><use href="#i-cpu"/></svg></span></div>
           <p class="pdesc">다수의 인원이 실시간으로 겨루는 퀴즈 서비스</p>
           <div class="pkpi"><span>접속 유입 시 p95</span><strong>최대 2.7s → 0.1s 이하</strong><i class="tip" tabindex="0" data-tip="로컬 재현, CPU 0.1개와 512MB 제한, 봇 400명에서 800명까지 초당 5명 유입, 1회 측정"><svg><use href="#i-info"/></svg></i></div>
-          <ul class="pmeta">
-            <li><svg><use href="#i-cal"/></svg>기간 : 2026.10 ~ 운영 중</li>
-            <li><svg><use href="#i-users"/></svg>팀 구성 : 개인</li>
-            <li><svg><use href="#i-laptop"/></svg>역할 : 기획, 설계, 검증, 운영</li>
-          </ul>
-          <ul class="roles"><li>실시간 서버</li><li>Elo 레이팅</li><li>부하 테스트</li><li>배포</li></ul>
-          <button class="more" type="button" data-open="d-quiz">자세히 보기<svg><use href="#i-arrow"/></svg></button>
         </div>
+        <div class="pcol"><h4><svg><use href="#i-users"/></svg>개발 인원</h4><p>개인</p></div>
+        <div class="pcol"><h4><svg><use href="#i-cal"/></svg>개발 기간</h4><p>2026.10 ~ 운영 중</p></div>
+        <button class="more" type="button" data-open="d-quiz" aria-label="자세히 보기"><svg><use href="#i-arrow"/></svg></button>
       </article>
 
-      <article class="pcard">
-        <div class="cover c7">
-          <svg><use href="#i-compass"/></svg>
-          <strong>연료 최적 항로 엔진</strong>
+      <article class="pcard prow">
+        <div class="cover c3"><svg><use href="#i-target"/></svg></div>
+        <div class="pmain">
+          <div class="ptitle"><h3>항해 게임 도우미</h3><span class="ai" tabindex="0" data-tip="구현에 AI 코딩 도구 활용"><svg><use href="#i-cpu"/></svg></span></div>
+          <p class="pdesc">항해사 캐릭터 배치 탐색기와 화면 인식 도착 알림</p>
+          <div class="pkpi"><span>10초 탐색으로 목표 14개 달성</span><strong>5회 중 1회 → 5회 중 5회</strong><i class="tip" tabindex="0" data-tip="실제 선단 파일, 로컬 각 5회"><svg><use href="#i-info"/></svg></i></div>
         </div>
-        <div class="pbody">
+        <div class="pcol"><h4><svg><use href="#i-users"/></svg>개발 인원</h4><p>개인</p></div>
+        <div class="pcol"><h4><svg><use href="#i-cal"/></svg>개발 기간</h4><p>2026.09 ~ 운영 중</p></div>
+        <button class="more" type="button" data-open="d-fleet" aria-label="자세히 보기"><svg><use href="#i-arrow"/></svg></button>
+      </article>
+
+      <article class="pcard prow">
+        <div class="cover c4"><svg><use href="#i-chart"/></svg></div>
+        <div class="pmain">
+          <div class="ptitle"><h3>낚시 게임 입질 모니터링</h3><span class="ai" tabindex="0" data-tip="구현에 AI 코딩 도구 활용"><svg><use href="#i-cpu"/></svg></span></div>
+          <p class="pdesc">어종별 활성도와 미끼, 수역 대시보드</p>
+          <div class="pkpi"><span>활성도 판정 정확도</span><strong>64% (기준선 33%)</strong><i class="tip" tabindex="0" data-tip="사람이 판정한 라벨 381건, 5-fold 교차검증, 기준선은 다수 클래스 예측"><svg><use href="#i-info"/></svg></i></div>
+        </div>
+        <div class="pcol"><h4><svg><use href="#i-users"/></svg>개발 인원</h4><p>개인</p></div>
+        <div class="pcol"><h4><svg><use href="#i-cal"/></svg>개발 기간</h4><p>2026.06 ~ 운영 중</p></div>
+        <button class="more" type="button" data-open="d-fish" aria-label="자세히 보기"><svg><use href="#i-arrow"/></svg></button>
+      </article>
+
+      <article class="pcard prow">
+        <div class="cover c7"><svg><use href="#i-compass"/></svg></div>
+        <div class="pmain">
           <div class="ptitle"><h3>선박 최적 항로 탐색</h3></div>
           <p class="pdesc">기상 예보를 반영해 연료가 가장 적은 항로와 속력 탐색</p>
           <div class="pkpi"><span>2만 km 항로 계획</span><strong>2,894초 → 315초</strong><i class="tip" tabindex="0" data-tip="부산에서 로테르담, 같은 PC, 결과는 0.01 t 안에서 동일"><svg><use href="#i-info"/></svg></i></div>
-          <ul class="pmeta">
-            <li><svg><use href="#i-cal"/></svg>기간 : 2026.11</li>
-            <li><svg><use href="#i-users"/></svg>팀 구성 : 개인</li>
-            <li><svg><use href="#i-laptop"/></svg>역할 : 문제 정의, 측정, 검증 실험</li>
-          </ul>
-          <ul class="roles"><li>경로 탐색</li><li>연료 모델</li><li>성능 최적화</li><li>검증 실험</li></ul>
-          <button class="more" type="button" data-open="d-route">자세히 보기<svg><use href="#i-arrow"/></svg></button>
         </div>
-      </article>
-
-      <article class="pcard">
-        <div class="cover c3">
-          <svg><use href="#i-target"/></svg>
-          <strong>배치 최적화와 화면 인식</strong>
-        </div>
-        <div class="pbody">
-          <div class="ptitle"><h3>항해 게임 도우미</h3><span class="ai" tabindex="0" data-tip="구현에 AI 코딩 도구 활용"><svg><use href="#i-cpu"/></svg></span></div>
-          <p class="pdesc">항해사 캐릭터 배치 탐색기와 화면 인식 도착 알림</p>
-          <div class="pkpi"><span>목표 14개 달성</span><strong>5회 중 1회 → 5회 중 5회</strong><i class="tip" tabindex="0" data-tip="실제 선단 파일, 10초 탐색, 로컬 각 5회"><svg><use href="#i-info"/></svg></i></div>
-          <ul class="pmeta">
-            <li><svg><use href="#i-cal"/></svg>기간 : 2026.09 ~ 운영 중</li>
-            <li><svg><use href="#i-users"/></svg>팀 구성 : 개인</li>
-            <li><svg><use href="#i-laptop"/></svg>역할 : 기획, 설계, 검증, 운영</li>
-          </ul>
-          <ul class="roles"><li>탐색 알고리즘</li><li>템플릿 매칭</li><li>CI/CD</li></ul>
-          <button class="more" type="button" data-open="d-fleet">자세히 보기<svg><use href="#i-arrow"/></svg></button>
-        </div>
-      </article>
-
-      <article class="pcard">
-        <div class="cover c4">
-          <svg><use href="#i-chart"/></svg>
-          <strong>활성도 대시보드</strong>
-        </div>
-        <div class="pbody">
-          <div class="ptitle"><h3>낚시 게임 입질 모니터링</h3><span class="ai" tabindex="0" data-tip="구현에 AI 코딩 도구 활용"><svg><use href="#i-cpu"/></svg></span></div>
-          <p class="pdesc">어종별 활성도와 미끼, 수역 대시보드</p>
-          <div class="pkpi"><span>활성도 판정 정확도</span><strong>기준선 33% → 64%</strong><i class="tip" tabindex="0" data-tip="사람이 판정한 라벨 381건, 5-fold 교차검증, 기준선은 다수 클래스 예측"><svg><use href="#i-info"/></svg></i></div>
-          <ul class="pmeta">
-            <li><svg><use href="#i-cal"/></svg>기간 : 2026.06 ~ 운영 중</li>
-            <li><svg><use href="#i-users"/></svg>팀 구성 : 개인</li>
-            <li><svg><use href="#i-laptop"/></svg>역할 : 기획, 설계, 검증, 운영</li>
-          </ul>
-          <ul class="roles"><li>BE 개발</li><li>분류 모델</li><li>서버 운영</li></ul>
-          <button class="more" type="button" data-open="d-fish">자세히 보기<svg><use href="#i-arrow"/></svg></button>
-        </div>
+        <div class="pcol"><h4><svg><use href="#i-users"/></svg>개발 인원</h4><p>개인</p></div>
+        <div class="pcol"><h4><svg><use href="#i-cal"/></svg>개발 기간</h4><p>2026.11</p></div>
+        <button class="more" type="button" data-open="d-route" aria-label="자세히 보기"><svg><use href="#i-arrow"/></svg></button>
       </article>
 
     </div>
@@ -347,6 +300,22 @@
 </footer>
 
 <!-- 프로젝트 상세 -->
+<dialog id="d-linux" class="modal">
+  <div class="mhead">
+    <div><h3>리눅스 명령어 C 구현</h3><p>2025.05 ~ 2025.06 / 5인 팀</p></div>
+    <button type="button" class="close" aria-label="닫기"><svg><use href="#i-x"/></svg></button>
+  </div>
+  <div class="mintro">
+    <p class="kicker">팀 프로젝트</p>
+    <p class="lead">리눅스 핵심 명령어를 C로 구현해 하나의 셸로 묶은 운영체제 수업 프로젝트</p>
+  </div>
+  <div class="minfo">
+    <div><h5>핵심 기능</h5><ul class="feat"><li>디렉터리와 파일을 트리 노드로 표현한 가상 파일 시스템</li><li>명령어 이름으로 해당 함수만 호출하는 셸</li><li>ls, cat, cd, grep, find, mkdir, rm, cp 등 12개와 옵션</li><li>여러 디렉터리 동시 생성은 멀티스레드로 처리</li></ul></div>
+    <div class="mine"><h5>맡은 부분</h5><ul><li><b>구조</b>가상 파일 시스템, 명령어 실행 구조</li><li><b>구현</b>pwd</li><li><b>통합</b>다섯 명 코드 통합, 실행 테스트</li></ul></div>
+  </div>
+  <ul class="stack"><li>C</li><li>pthread</li><li>gcc</li><li>AWS EC2</li></ul>
+</dialog>
+
 <dialog id="d-cal" class="modal">
   <div class="mhead">
     <div><h3>AI 에이전트용 캘린더</h3><p>2026.11 ~ 운영 중 / 개인</p></div>
@@ -375,27 +344,11 @@
       </ol>
     </section>
     <section class="case">
-      <h4>달력은 바로 뜨는데 일정만 1초 지연</h4>
-      <dl>
-        <dt>원인</dt><dd>코드를 고치기 전에 실서비스 응답 시간부터 측정. 서버는 워싱턴, DB는 도쿄</dd>
-        <dt>해결</dt><dd>서버 지역을 도쿄로 이전</dd>
-        <dt>결과</dt><dd><em>쿼리 1개 153~155ms → 4~6ms</em></dd>
-      </dl>
-    </section>
-    <section class="case">
       <h4>수정을 확인할 곳이 실서비스뿐</h4>
       <dl>
         <dt>원인</dt><dd>main 하나 구조. 검토 전 코드가 운영 DB에 붙을 수 있는 설정</dd>
         <dt>해결</dt><dd>dev 브랜치, 개발 서버, 시험용 DB 분리. 운영 DB 토큰은 운영 환경에만</dd>
         <dt>결과</dt><dd><em>모든 변경이 개발 서버를 거쳐 출시</em></dd>
-      </dl>
-    </section>
-    <section class="case">
-      <h4>설치하자마자 꺼지는 안드로이드 앱</h4>
-      <dl>
-        <dt>원인</dt><dd>로그 없음. GitHub Actions 에뮬레이터 실행 검사로 재현해 상태바 설정 순서와 높이 없는 여백 확인</dd>
-        <dt>해결</dt><dd>두 원인 수정, 실행 검사를 CI에 유지</dd>
-        <dt>결과</dt><dd><em>모든 PR에서 앱 기동과 핵심 버튼 표시 자동 검사</em></dd>
       </dl>
     </section>
     <section class="case">
@@ -447,82 +400,11 @@
       </dl>
     </section>
     <section class="case">
-      <h4>매일 누적 거래 전체를 전송</h4>
-      <dl>
-        <dt>원인</dt><dd>누적 300만 건이면 파일 한도 256MB 도달 (계산)</dd>
-        <dt>해결</dt><dd>첫날만 전체, 이후 바뀐 거래만 전송</dd>
-        <dt>결과</dt><dd><em>16일 입력 일치, 점수 차 0</em> (로컬 171만 건)</dd>
-      </dl>
-    </section>
-    <section class="case">
       <h4>실패하면 DB 초기화 후 전체 재실행</h4>
       <dl>
         <dt>원인</dt><dd>실패한 요청 기록이 재개와 초기화를 막음</dd>
         <dt>해결</dt><dd>실패한 모델만 준비된 입력으로 새 회차 재전송</dd>
         <dt>결과</dt><dd><em>강제 종료 시험 결과 동일</em>, dev 작업 2회차 완료</dd>
-      </dl>
-    </section>
-  </div>
-</dialog>
-
-<dialog id="d-ex" class="modal">
-  <div class="mhead">
-    <div><h3>스포츠 구단 모의 거래소</h3><p>2026.10 ~ 운영 중 / 개인</p></div>
-    <button type="button" class="close" aria-label="닫기"><svg><use href="#i-x"/></svg></button>
-  </div>
-  <div class="mintro">
-    <p class="kicker">개인 프로젝트</p>
-    <p class="lead">스포츠 구단을 종목처럼 사고파는 포인트 기반 모의 거래소. 유저끼리 호가창에서 매매</p>
-  </div>
-  <div class="minfo">
-    <div><h5>핵심 기능</h5><ul class="feat"><li>가격과 시간 우선 매칭, 지정가와 시장가</li><li>복식부기 원장과 5분 주기 자동 대사</li><li>WebSocket 실시간 시세</li><li>공모, 배당, 리더보드, 이상거래 탐지</li></ul></div>
-    <div class="mine"><h5>맡은 부분</h5><ul><li><b>설계</b>버린 대안까지 설계 결정 기록 41건</li><li><b>검증</b>장애와 동시 요청 테스트, CI 검사 6종</li><li><b>측정</b>부하 측정과 병목 판단</li><li><b>운영</b>Docker Compose 배포</li></ul></div>
-  </div>
-  <ul class="stack"><li>Spring Boot</li><li>MySQL 8.4</li><li>Flyway</li><li>WebSocket</li><li>React</li><li>Prometheus</li><li>Docker Compose</li><li>Playwright</li></ul>
-  <h4 class="mcases">문제 해결과 설계</h4>
-  <div class="cases">
-    <section class="case">
-      <h4>사용자가 늘면 어디가 먼저 막히는가</h4>
-      <ol class="trail">
-        <li class="s-sym"><b>증상</b><span>주문 50명 부하에서 p99 1초 안팎, 화면처럼 움직이는 봇 600개에서 모든 요청 2초</span></li>
-        <li class="s-no"><b>배제</b><span>매칭 엔진. 매칭은 0.1ms 미만</span></li>
-        <li class="s-yes"><b>원인</b><span>주문당 DB 트랜잭션 두 번이 처리 시간 22.5ms의 90% 이상</span></li>
-        <li class="s-no"><b>배제</b><span>연결 풀 크기</span></li>
-        <li class="s-yes"><b>원인</b><span>체결 표 전체를 훑는 조회, 요청마다 다시 만드는 순위. 서버 CPU의 70%는 요청 한 건마다 드는 공통 처리</span></li>
-        <li class="s-fix"><b>해결</b><span>트랜잭션당 DB 왕복 축소, 인덱스 조인, 순위 5초 캐시, 3초마다 보내던 요청 11건을 1건으로</span></li>
-        <li class="s-res"><b>결과</b><span><em>주문 처리량 약 25% 증가, 조회 32,859행 → 29행, CPU 73% → 42%</em> (4 vCPU 한 대, 전후 비교)</span></li>
-      </ol>
-    </section>
-    <section class="case">
-      <h4>재시도한 주문이 두 번 체결될 위험</h4>
-      <dl>
-        <dt>위험</dt><dd>응답을 못 받은 주문의 재요청과 새 주문을 서버가 구별할 근거 없음</dd>
-        <dt>설계</dt><dd>주문마다 클라이언트 주문 번호, 계정과 번호에 유일 제약. 같은 번호는 저장된 결과 반환</dd>
-        <dt>검증</dt><dd><em>8스레드 동시 재시도에 주문 1건</em>. 강제 종료 시험 1,736건 중 미응답 28건 재시도, 중복 0건</dd>
-      </dl>
-    </section>
-    <section class="case">
-      <h4>처리 도중 서버가 죽어도 잔고 일치</h4>
-      <dl>
-        <dt>위험</dt><dd>주문 하나가 잔고 확인, 매칭, 체결 반영을 거쳐 중간 상태가 남을 수 있음</dd>
-        <dt>설계</dt><dd>접수와 정산 트랜잭션 두 개. 재시작 시 접수 중 주문 취소 후 호가창 복구</dd>
-        <dt>검증</dt><dd><em>kill -9 3회 반복 통과</em>, 동시 주문 1,618건 교착 0건. CI에서 매번 실행</dd>
-      </dl>
-    </section>
-    <section class="case">
-      <h4>잔고가 틀어져도 알 방법이 없음</h4>
-      <dl>
-        <dt>위험</dt><dd>잔고 테이블은 현재 값만 보유, 변경 근거 없음</dd>
-        <dt>설계</dt><dd>모든 이동을 같은 트랜잭션에서 복식부기 전표로 기록, 5분마다 대사와 경보</dd>
-        <dt>검증</dt><dd><em>잔고 7P 변조 즉시 탐지</em>, 전표 3,051장 뒤 대사 일치</dd>
-      </dl>
-    </section>
-    <section class="case">
-      <h4>주문 한 건으로 종목 매도 전체가 막힘</h4>
-      <dl>
-        <dt>원인</dt><dd>수량 상한 없음. 가격 × 수량 계산에서 정수 오버플로</dd>
-        <dt>해결</dt><dd>공격을 테스트로 재현한 뒤 상한 1,000,000주, 넘침 검사 추가</dd>
-        <dt>결과</dt><dd><em>같은 주문 422 거절</em>, 서버 테스트 237개 통과</dd>
       </dl>
     </section>
   </div>
@@ -567,30 +449,6 @@
         <dt>결과</dt><dd><em>단일 장애점 제거</em>, 로컬 재현으로 확인</dd>
       </dl>
     </section>
-    <section class="case">
-      <h4>빠르게 누르면 선택이 되돌아감</h4>
-      <dl>
-        <dt>원인</dt><dd>응답 전에 옛 서버 상태로 다음 값을 계산</dd>
-        <dt>해결</dt><dd>응답을 200ms 늦춘 서버로 재현, 화면 상태 기준으로 전송</dd>
-        <dt>결과</dt><dd><em>시나리오 5개 통과</em></dd>
-      </dl>
-    </section>
-    <section class="case">
-      <h4>AI가 만든 문제, 보기만 봐도 답이 보임</h4>
-      <dl>
-        <dt>원인</dt><dd>다른 모델이 정답을 가린 채 풀면 100개 모두 일치. 그런데 본문 없이 보기만으로 69% 정답 (기출 49%)</dd>
-        <dt>해결</dt><dd>오답 보기가 답을 흘리는 32문제 재작성</dd>
-        <dt>결과</dt><dd><em>69% → 57%</em>, 이후 생성 작업의 검사 기준으로 사용</dd>
-      </dl>
-    </section>
-    <section class="case">
-      <h4>재시작마다 전적 소실</h4>
-      <dl>
-        <dt>원인</dt><dd>서버 재시작 시 디스크 초기화</dd>
-        <dt>해결</dt><dd>Supabase 이전, 서버 측 토큰 검증</dd>
-        <dt>결과</dt><dd><em>Google, 카카오 로그인</em></dd>
-      </dl>
-    </section>
   </div>
 </dialog>
 
@@ -604,41 +462,12 @@
     <p class="lead">바람, 파도, 해류 예보를 반영해 도착 기한을 지키면서 연료를 가장 적게 쓰는 항로와 속력을 함께 찾는 엔진</p>
   </div>
   <div class="minfo">
-    <div><h5>핵심 기능</h5><ul class="feat"><li>전 세계 해안 격자, 운하와 해협 링크</li><li>선체 저항과 파랑 부가저항 연료 모델</li><li>기한을 지키는 항로와 속력 동시 탐색</li><li>매일 재계획 항해 시뮬레이션, 웹 GUI</li></ul></div>
+    <div><h5>핵심 기능</h5><ul class="feat"><li>전 세계 해안 격자, 운하와 해협 링크</li><li>선체 저항과 파도로 늘어나는 저항을 반영한 연료 모델</li><li>기한을 지키는 항로와 속력 동시 탐색</li><li>매일 재계획 항해 시뮬레이션, 웹 GUI</li></ul></div>
     <div class="mine"><h5>일한 방식</h5><ul><li><b>시작</b>단순한 버전을 실제 항로 7개로 먼저 실행</li><li><b>측정</b>문제를 수치로 재고 같은 실험으로 전후 비교</li><li><b>기준</b>합격 기준은 결과를 보기 전에 기록</li><li><b>검증</b>논문 예제, 정답이 있는 문제, 독립 날씨 자료와 대조</li></ul></div>
   </div>
   <ul class="stack"><li>Python</li><li>Numba</li><li>NumPy</li><li>Dijkstra</li><li>Lazy Theta*</li><li>동적 계획법</li></ul>
   <h4 class="mcases">문제 해결</h4>
   <div class="cases">
-    <section class="case">
-      <h4>300초 안에 끝나지 않는 연료 탐색</h4>
-      <ol class="trail">
-        <li class="s-sym"><b>증상</b><span>긴 항로 4개가 300초 안에 미완료. 이동 하나의 연료 계산 약 49ms</span></li>
-        <li class="s-yes"><b>원인</b><span>프로파일링 결과 99%가 파랑 부가저항 계산</span></li>
-        <li class="s-fix"><b>해결</b><span>부가저항이 파고 제곱에 비례하는 성질로 표를 미리 계산. 48.5ms → 약 1ms</span></li>
-        <li class="s-yes"><b>원인</b><span>다시 재니 80%가 예보 보간 호출 비용</span></li>
-        <li class="s-fix"><b>해결</b><span>이동 1,000만 개를 탐색 전에 배열로 일괄 계산. 이동당 약 1.5µs</span></li>
-        <li class="s-yes"><b>원인</b><span>A* 휴리스틱이 하한이 아님. 뒤바람으로 이동의 15%가 추정보다 쌈</span></li>
-        <li class="s-fix"><b>해결</b><span>Dijkstra로 바꿔 최적 보장</span></li>
-        <li class="s-res"><b>결과</b><span><em>시험 항로 7개 모두 2~10초</em></span></li>
-      </ol>
-    </section>
-    <section class="case">
-      <h4>지구 반대편으로 도는 최단 경로</h4>
-      <dl>
-        <dt>원인</dt><dd>날짜변경선 미연결, 운하 없음, 칸 중심만 보는 육지 판정 등 8가지를 목록화</dd>
-        <dt>해결</dt><dd>이동 선분을 육지 폴리곤과 직접 대조, 육지가 걸친 칸만 세분화</dd>
-        <dt>결과</dt><dd><em>부산에서 LA 31,493km → 9,669.9km</em> (대권의 1.003배), 육지 관통 0</dd>
-      </dl>
-    </section>
-    <section class="case">
-      <h4>속력까지 최적화하자 모든 배가 최저 속력</h4>
-      <dl>
-        <dt>원인</dt><dd>목적함수에 도착 기한 없음. 시각을 탐색 상태에 넣으면 상태가 폭발해 600초 안에 미완료</dd>
-        <dt>해결</dt><dd>시간에 가격을 매겨 "연료 + 가격 × 시간"을 최소화, 가격은 이분 탐색</dd>
-        <dt>결과</dt><dd><em>모든 항로 기한 준수</em></dd>
-      </dl>
-    </section>
     <section class="case">
       <h4>55분 걸리던 2만 km 항로 계획</h4>
       <dl>
@@ -691,20 +520,12 @@
       <ol class="trail">
         <li class="s-sym"><b>증상</b><span>조합, 의뢰 화면 일치 점수 0.766, 0.819</span></li>
         <li class="s-fix"><b>해결</b><span>공통 아이콘을 빼고 글자만 비교, 의뢰 화면 0.651</span></li>
-        <li class="s-yes"><b>원인</b><span>대신 UI 105% 실제 도착이 0.800으로 하락. 배율별 렌더링 차이</span></li>
+        <li class="s-yes"><b>원인</b><span>화면 배율 105%에서는 실제 도착 화면 점수가 0.800으로 하락. 배율마다 글자 렌더링이 다름</span></li>
         <li class="s-fix"><b>해결</b><span>배율별 템플릿 추가, 0.952로 회복</span></li>
         <li class="s-yes"><b>원인</b><span>항해 중 채팅 속 같은 글자에 0.931. 글자는 같고 위치가 다름</span></li>
         <li class="s-fix"><b>해결</b><span>제목 시작 위치를 좌상단으로 제한, 0.396</span></li>
         <li class="s-res"><b>결과</b><span><em>도착 28장 최저 0.828, 비도착 11장 최고 0.617</em> (기준 0.8), 프레임당 31ms</span></li>
       </ol>
-    </section>
-    <section class="case">
-      <h4>탐색 결과를 믿을 수 있는가</h4>
-      <dl>
-        <dt>원인</dt><dd>10초 휴리스틱은 최적해 미보장</dd>
-        <dt>해결</dt><dd>정수계획법으로 정확한 최적값을 구해 대조</dd>
-        <dt>결과</dt><dd><em>목표 6, 10개 매번 최적</em>, 16, 23개 0.22% 이내 (각 5회)</dd>
-      </dl>
     </section>
   </div>
 </dialog>
@@ -743,14 +564,6 @@
         <li class="s-fix"><b>해결</b><span>크기만 제거, 색상 보존, 조합 순서 통일. 파서 사례 27건 통과</span></li>
         <li class="s-res"><b>결과</b><span><em>282그룹 중 57그룹 점유율 상승</em>, 평균 +2.8%p</span></li>
       </ol>
-    </section>
-    <section class="case">
-      <h4>카드와 상세 화면 비율 불일치</h4>
-      <dl>
-        <dt>원인</dt><dd>상세 화면은 상위 15종만 분모에 포함</dd>
-        <dt>해결</dt><dd>분모 기준 통일</dd>
-        <dt>결과</dt><dd><em>62% → 47%</em>, 카드와 일치</dd>
-      </dl>
     </section>
   </div>
 </dialog>
