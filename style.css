@@ -122,9 +122,6 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .pbody { padding: 18px 22px 16px; display: flex; flex-direction: column; flex: 1; }
 .ptitle { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .ptitle h3 { margin: 0; font-size: 19px; font-weight: 700; color: var(--blue); }
-.ai { display: inline-flex; color: var(--faint); cursor: help; padding: 4px; margin: -4px; }
-.ai[data-tip]::after { left: auto; right: -4px; transform: translate(0, 4px); }
-.ai[data-tip]:hover::after, .ai[data-tip]:focus-visible::after { transform: translate(0, 0); }
 .pdesc { margin: 4px 0 10px; font-size: 14.5px; color: var(--sub); }
 .pmeta { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 3px; font-size: 13px; color: var(--sub); }
 .pmeta li { display: flex; align-items: center; gap: 7px; }
@@ -183,7 +180,6 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 /* 프로젝트 카드 전체 클릭 + 호버 */
 .pcard { position: relative; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
 .pcard .more::after { content: ""; position: absolute; inset: 0; border-radius: 12px; }
-.pcard .ai { position: relative; z-index: 2; }
 .pcard:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgba(26, 35, 51, .06), 0 16px 32px rgba(31, 85, 192, .16); }
 .pcard:hover .more { color: var(--blue-deep); }
 .pcard:hover .more svg { transform: translate(2px, -2px); }
@@ -288,5 +284,4 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .minfo { grid-template-columns: minmax(0, 1fr); gap: 16px; }
 .prow { overflow: visible; }
 .prow:hover, .prow:focus-within { z-index: 3; }
-.prow .ai[data-tip]::after, .prow .pkpi .tip[data-tip]::after { left: -4px; right: auto; }
-@media (max-width: 760px) { .prow .ai[data-tip]::after { left: auto; right: -4px; } }
+.prow .pkpi .tip[data-tip]::after { left: -4px; right: auto; }
