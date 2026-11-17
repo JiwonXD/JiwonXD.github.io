@@ -326,6 +326,7 @@
     <p class="lead">AI 에이전트가 사람 대신 일정을 고쳐도 안전하도록 승인 대기, 임시 보류, 변경 기록과 되돌리기를 갖춘 캘린더</p>
     <div class="mlinks"><a class="lbtn live" href="https://biseos.com" target="_blank" rel="noopener">라이브 보기<svg><use href="#i-ext"/></svg></a></div>
   </div>
+  <img class="mshot" src="assets/shots/cal.jpg" alt="AI 에이전트용 캘린더 월간 화면과 휴대폰 위젯" loading="lazy">
   <div class="minfo">
     <div><h5>구현</h5><ul class="feat"><li>에이전트는 MCP 서버의 일정 도구를 호출하고 OAuth 2.1로 로그인, 사람은 웹과 안드로이드 앱, 위젯으로 확인</li><li>에이전트의 변경은 설정에 따라 사람 승인을 거치고, 확정 전에는 임시 보류로 시간만 잡아 둠</li><li>모든 변경을 기록해 언제든 되돌릴 수 있고, 반복 일정과 음력, 시간대 지원</li></ul></div>
     <div class="mine"><h5>맡은 부분</h5><ul><li><b>기획</b>제품 방향과 범위</li><li><b>결정</b>배포 구조, 저장소, 뺄 기능 선택</li><li><b>인프라</b>DB, 배포, OAuth, 도메인, 감시 설정</li><li><b>검증</b>실기기 확인, 장애 알림 시험</li><li><b>출시</b>릴리스, 스토어 비공개 테스트</li></ul></div>
@@ -421,6 +422,7 @@
     <p class="lead">자격증 기출문제를 2~4명이 실시간으로 겨루며 푸는 퀴즈 대전</p>
     <div class="mlinks"><a class="lbtn live" href="https://certifiquiz.com" target="_blank" rel="noopener">라이브 보기<svg><use href="#i-ext"/></svg></a></div>
   </div>
+  <img class="mshot" src="assets/shots/quiz.jpg" alt="자격증 퀴즈 대전 문제 풀이 화면" loading="lazy">
   <div class="minfo">
     <div><h5>구현</h5><ul class="feat"><li>소켓 연결로 매칭, 방 입장, 출제, 채점을 실시간 처리, 실력에 맞춘 매칭과 사설 방 지원</li><li>객관식, 단답형, 코드, 그림 문제 출제와 레이팅 순위, 오답노트와 학습 페이지 제공</li><li>로그인과 전적은 Supabase에 두고 서버에서 토큰 검증, Google과 카카오 로그인</li><li>AI 질문은 LLM API로 제공, 웹과 안드로이드 앱으로 서비스</li></ul></div>
     <div class="mine"><h5>맡은 부분</h5><ul><li><b>기획</b>대전 방식과 기능 범위</li><li><b>설계</b>실시간 서버 구조, 부하 테스트 조건</li><li><b>검증</b>측정 결과 판단, AI 생성 데이터 검사 기준</li><li><b>운영</b>배포, 도메인, 소셜 로그인, 앱 심사</li></ul></div>
@@ -463,6 +465,7 @@
     <p class="lead">바람, 파도, 해류 예보를 반영해 도착 기한을 지키면서 연료를 가장 적게 쓰는 항로와 속력을 함께 찾는 엔진</p>
     <div class="mlinks"><a class="lbtn" href="https://github.com/JiwonXD/OptimalShipRouting" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg>Repo</a></div>
   </div>
+  <img class="mshot" src="assets/shots/route.jpg" alt="선박 최적 항로 탐색 결과 지도" loading="lazy">
   <div class="minfo">
     <div><h5>구현</h5><ul class="feat"><li>전 세계 바다를 격자로 나누고 육지가 걸친 칸만 잘게 쪼갬, 운하와 해협은 따로 연결</li><li>바람과 파도, 해류 예보를 선박 저항 모델에 넣어 구간마다 연료 소모를 계산</li><li>시간에 가격을 매겨 연료와 시간을 함께 줄이고, 그 가격을 조절해 도착 기한에 맞춤</li><li>새 예보가 나올 때마다 남은 항로를 다시 계획하는 항해 시뮬레이션과 결과를 보여 주는 웹 화면</li></ul></div>
     <div class="mine"><h5>일한 방식</h5><ul><li><b>시작</b>단순한 버전을 실제 항로 7개로 먼저 실행</li><li><b>측정</b>문제를 수치로 재고 같은 실험으로 전후 비교</li><li><b>기준</b>합격 기준은 결과를 보기 전에 기록</li><li><b>검증</b>논문 예제, 정답이 있는 문제, 독립 날씨 자료와 대조</li></ul></div>
