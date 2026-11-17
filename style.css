@@ -118,6 +118,7 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .c5 { background: linear-gradient(135deg, #4c1d95, #7c5ce0); }
 .c6 { background: linear-gradient(135deg, #9f1239, #dc4a68); }
 .c7 { background: linear-gradient(135deg, #0e6c8c, #2aa7c9); }
+.c8 { background: linear-gradient(135deg, #3f6212, #6a9a2a); }
 .pbody { padding: 18px 22px 16px; display: flex; flex-direction: column; flex: 1; }
 .ptitle { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .ptitle h3 { margin: 0; font-size: 19px; font-weight: 700; color: var(--blue); }
