@@ -283,3 +283,4 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
   .prow .pmain { flex-basis: calc(100% - 92px); }
   .pcol { width: auto; flex: 1; padding-left: 0; border-left: 0; }
 }
+.prow .cover svg.wide { width: 44px; height: 44px; opacity: 1; stroke-width: 1.6; }
