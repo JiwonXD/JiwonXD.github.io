@@ -286,3 +286,7 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .prow .cover svg.wide { width: 44px; height: 44px; opacity: 1; stroke-width: 1.6; }
 .prow .cover img { width: 100%; height: 100%; display: block; border-radius: 10px; }
 .minfo { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.prow { overflow: visible; }
+.prow:hover, .prow:focus-within { z-index: 3; }
+.prow .ai[data-tip]::after, .prow .pkpi .tip[data-tip]::after { left: -4px; right: auto; }
+@media (max-width: 760px) { .prow .ai[data-tip]::after { left: auto; right: -4px; } }

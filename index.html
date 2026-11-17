@@ -10,7 +10,7 @@
 <meta property="og:image" content="https://jiwonxd.github.io/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="style.css?v=20261117e">
+<link rel="stylesheet" href="style.css?v=20261117f">
 </head>
 <body>
 
@@ -544,7 +544,7 @@
     <div class="mlinks"><a class="lbtn live" href="https://rf4trends.com" target="_blank" rel="noopener">라이브 보기<svg><use href="#i-ext"/></svg></a></div>
   </div>
   <div class="minfo">
-    <div><h5>구현</h5><ul class="feat"><li>15분마다 공식 주간기록을 모아 SQLite에 저장하고 어종별 활성도와 미끼, 수역 점유율을 집계</li><li>활성 판정은 "트로피 기록의 70% 이상" 같은 고정 기준을 버리고, 수집한 기록 전체를 대상으로 어종을 입력에 넣어 어종별 기준을 모델이 학습</li><li>활성 단계는 비활성, 불명, 활성, 강한 활성의 순서 있는 4단계로 분류하고, 점수는 단계별 확률을 가중한 기댓값으로 계산해 단계와 점수가 어긋나지 않게 함</li><li>이용자 제보로 활성도 판정 모델을 학습하고, 모델을 JSON으로 내보내 태블릿에서 추가 설치 없이 판정</li><li>서버는 태블릿 한 대, Cloudflare Tunnel로 외부에 공개</li></ul></div>
+    <div><h5>구현</h5><ul class="feat"><li>15분마다 공식 주간기록을 모아 SQLite에 저장하고 어종별 활성도와 미끼, 수역 점유율을 집계</li><li>이용자 제보로 활성도 판정 모델을 학습하고, 모델을 JSON으로 내보내 태블릿에서 추가 설치 없이 판정</li><li>서버는 태블릿 한 대, Cloudflare Tunnel로 외부에 공개</li></ul></div>
     <div class="mine"><h5>맡은 부분</h5><ul><li><b>기획</b>개인화 대시보드로 범위 결정</li><li><b>데이터</b>활성도 라벨링, 모델 비교</li><li><b>설계</b>수집기 분리, 태블릿 추론 구조</li><li><b>운영</b>태블릿 서버, Cloudflare Tunnel</li></ul></div>
   </div>
   <ul class="stack"><li>Python</li><li>FastAPI</li><li>SQLite</li><li>scikit-learn</li><li>Cloudflare Tunnel</li></ul>
@@ -552,11 +552,15 @@
   <div class="cases">
     <section class="case">
       <h4>고정 공식이 어종마다 안 맞음</h4>
-      <dl>
-        <dt>원인</dt><dd>어종별 희귀도와 기록 규모 차이</dd>
-        <dt>해결</dt><dd>라벨 381건으로 모델 비교, 트리를 JSON으로 내보내 태블릿에서 추론</dd>
-        <dt>결과</dt><dd><em>RandomForest 64%</em> (다수 클래스 기준선 33%, 5-fold)</dd>
-      </dl>
+      <ol class="trail">
+        <li class="s-sym"><b>증상</b><span>처음 기준은 "트로피 기록의 70% 이상이면 활성". 70%는 임의로 정한 값</span></li>
+        <li class="s-yes"><b>원인</b><span>주간기록에 오른 것부터 이미 상위권 선별. 작은 기록이 갱신되지 않는 것도 비활성의 근거</span></li>
+        <li class="s-yes"><b>원인</b><span>흔한 종과 희귀종은 활성 기준이 달라 하나의 수식으로 묶을 수 없음</span></li>
+        <li class="s-fix"><b>해결</b><span>대상을 수집 기록 전체로 넓히고, 어종을 입력에 넣어 어종별 기준을 모델이 학습</span></li>
+        <li class="s-fix"><b>해결</b><span>활성 단계를 비활성, 불명, 활성, 강한 활성의 순서 있는 4단계로 분류. 점수는 단계별 확률을 가중한 기댓값이라 단계와 점수가 어긋나지 않음</span></li>
+        <li class="s-fix"><b>해결</b><span>라벨 381건으로 모델 비교, 트리를 JSON으로 내보내 태블릿에서 추론</span></li>
+        <li class="s-res"><b>결과</b><span><em>RandomForest 64%</em> (다수 클래스 기준선 33%, 5-fold)</span></li>
+      </ol>
     </section>
     <section class="case">
       <h4>같은 미끼가 따로 집계됨</h4>
