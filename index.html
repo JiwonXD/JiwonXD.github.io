@@ -308,6 +308,7 @@
   <div class="mintro">
     <p class="kicker">팀 프로젝트</p>
     <p class="lead">리눅스 핵심 명령어를 C로 구현해 하나의 셸로 묶은 운영체제 수업 프로젝트</p>
+    <div class="mlinks"><a class="lbtn" href="https://github.com/JiwonXD/Making-Linux-Commands-with-C" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg>Repo</a></div>
   </div>
   <div class="minfo">
     <div><h5>구현</h5><ul class="feat"><li>디렉터리와 파일을 트리 노드로 표현한 가상 파일 시스템을 만들고, 시작할 때 실제 리눅스처럼 /home/user를 구성</li><li>셸이 입력된 명령어 이름을 보고 해당 함수만 호출하는 구조라 명령어마다 실행 함수 하나로 작성해 통합</li><li>ls, cat, cd, grep, find, mkdir, rm, cp 등 12개와 옵션 구현, 여러 디렉터리 동시 생성은 멀티스레드로 처리</li></ul></div>
@@ -324,6 +325,7 @@
   <div class="mintro">
     <p class="kicker">개인 프로젝트</p>
     <p class="lead">AI 에이전트가 사람 대신 일정을 고쳐도 안전하도록 승인 대기, 임시 보류, 변경 기록과 되돌리기를 갖춘 캘린더</p>
+    <div class="mlinks"><a class="lbtn live" href="https://biseos.com" target="_blank" rel="noopener">라이브 보기<svg><use href="#i-ext"/></svg></a></div>
   </div>
   <div class="minfo">
     <div><h5>구현</h5><ul class="feat"><li>에이전트는 MCP 서버의 일정 도구를 호출하고 OAuth 2.1로 로그인, 사람은 웹과 안드로이드 앱, 위젯으로 확인</li><li>에이전트의 변경은 설정에 따라 사람 승인을 거치고, 확정 전에는 임시 보류로 시간만 잡아 둠</li><li>모든 변경을 기록해 언제든 되돌릴 수 있고, 반복 일정과 음력, 시간대 지원</li></ul></div>
@@ -460,6 +462,7 @@
   <div class="mintro">
     <p class="kicker">개인 프로젝트, 시뮬레이션 검증</p>
     <p class="lead">바람, 파도, 해류 예보를 반영해 도착 기한을 지키면서 연료를 가장 적게 쓰는 항로와 속력을 함께 찾는 엔진</p>
+    <div class="mlinks"><a class="lbtn" href="https://github.com/JiwonXD/OptimalShipRouting" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg>Repo</a></div>
   </div>
   <div class="minfo">
     <div><h5>구현</h5><ul class="feat"><li>전 세계 바다를 격자로 나누고 육지가 걸친 칸만 잘게 쪼갬, 운하와 해협은 따로 연결</li><li>바람과 파도, 해류 예보를 선박 저항 모델에 넣어 구간마다 연료 소모를 계산</li><li>시간에 가격을 매겨 연료와 시간을 함께 줄이고, 그 가격을 조절해 도착 기한에 맞춤</li><li>새 예보가 나올 때마다 남은 항로를 다시 계획하는 항해 시뮬레이션과 결과를 보여 주는 웹 화면</li></ul></div>
