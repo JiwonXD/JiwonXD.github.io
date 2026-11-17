@@ -211,12 +211,6 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .contrib-tip { position: absolute; transform: translate(-50%, calc(-100% - 6px)); background: var(--text); color: #fff; font-size: 12px; padding: 4px 8px; border-radius: 5px; white-space: pre; pointer-events: none; z-index: 5; }
 
 /* 카드 대표 지표 */
-.pkpi { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; padding: 8px 12px; border-radius: 8px; background: var(--blue-soft); font-size: 13px; flex-wrap: wrap; }
-.pkpi span { color: var(--sub); }
-.pkpi strong { color: var(--blue-deep); font-weight: 700; }
-.pkpi .tip { font-style: normal; margin-left: auto; display: inline-flex; color: var(--faint); cursor: help; position: relative; z-index: 2; }
-.pkpi .tip[data-tip]::after { left: auto; right: -4px; transform: translate(0, 4px); }
-.pkpi .tip[data-tip]:hover::after, .pkpi .tip[data-tip]:focus-visible::after { transform: translate(0, 0); }
 
 /* 원인 추적 단계 */
 .trail { list-style: none; margin: 0; padding: 0; }
@@ -266,9 +260,7 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .prow .pmain { flex: 1; min-width: 0; }
 .prow .ptitle { justify-content: flex-start; }
 .prow .pdesc { margin: 2px 0 8px; }
-.prow .pkpi { margin: 0; display: inline-flex; padding: 5px 10px; }
-.prow .pkpi .tip { margin-left: 2px; }
-.pcol { flex: none; width: 150px; padding-left: 20px; border-left: 1px solid var(--line); }
+.prow .prow .pcol { flex: none; width: 150px; padding-left: 20px; border-left: 1px solid var(--line); }
 .pcol h4 { margin: 0 0 4px; display: flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: var(--text); }
 .pcol h4 svg { width: 15px; height: 15px; color: var(--blue); }
 .pcol p { margin: 0; font-size: 13.5px; color: var(--sub); font-variant-numeric: tabular-nums; }
@@ -284,4 +276,6 @@ svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width:
 .minfo { grid-template-columns: minmax(0, 1fr); gap: 16px; }
 .prow { overflow: visible; }
 .prow:hover, .prow:focus-within { z-index: 3; }
-.prow .pkpi .tip[data-tip]::after { left: -4px; right: auto; }
+.prow .prole { margin: 0; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--sub); }
+.prole svg { width: 15px; height: 15px; color: var(--blue); flex: none; }
+.mshot { display: block; width: 100%; margin-top: 18px; border-radius: 10px; border: 1px solid var(--line); }
