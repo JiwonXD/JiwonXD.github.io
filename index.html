@@ -114,7 +114,6 @@
         <h3><svg><use href="#i-code"/></svg>개인 프로젝트</h3>
         <ul class="dated">
           <li><time>2026.11 ~ 운영 중</time><span>AI 에이전트용 캘린더</span></li>
-          <li><time>2026.11</time><span>선박 최적 항로 탐색</span></li>
           <li><time>2026.10 ~ 운영 중</time><span>자격증 실시간 퀴즈 대전</span></li>
           <li><time>2026.09 ~ 운영 중</time><span>항해 게임 도우미</span></li>
           <li><time>2026.06 ~ 운영 중</time><span>낚시 게임 입질 모니터링</span></li>
@@ -246,17 +245,6 @@
         <button class="more" type="button" data-open="d-fish" aria-label="자세히 보기"><svg><use href="#i-arrow"/></svg></button>
       </article>
 
-      <article class="pcard prow">
-        <div class="cover c7"><svg><use href="#i-compass"/></svg></div>
-        <div class="pmain">
-          <div class="ptitle"><h3>선박 최적 항로 탐색</h3></div>
-          <p class="pdesc">기상 예보를 반영해 연료가 가장 적은 항로와 속력 탐색</p>
-          <p class="prole"><svg><use href="#i-laptop"/></svg>문제 정의, 측정, 검증 실험</p>
-        </div>
-        <div class="pcol"><h4><svg><use href="#i-users"/></svg>개발 인원</h4><p>개인</p></div>
-        <div class="pcol"><h4><svg><use href="#i-cal"/></svg>개발 기간</h4><p>2026.11</p></div>
-        <button class="more" type="button" data-open="d-route" aria-label="자세히 보기"><svg><use href="#i-arrow"/></svg></button>
-      </article>
 
     </div>
   </div>
@@ -450,43 +438,6 @@
         <dt>재발</dt><dd>null만 막은 뒤, 객체 안의 값으로 같은 뿌리가 다시 드러남</dd>
         <dt>해결</dt><dd>값 하나씩 검사하는 대신 핸들러 전체를 감싸 예외가 그 요청의 실패로만 끝나게</dd>
         <dt>결과</dt><dd><em>단일 장애점 제거</em>, 로컬 재현으로 확인</dd>
-      </dl>
-    </section>
-  </div>
-</dialog>
-
-<dialog id="d-route" class="modal">
-  <div class="mhead">
-    <div><h3>기상 반영 선박 최적 항로 탐색</h3><p>2026.11 / 개인</p></div>
-    <button type="button" class="close" aria-label="닫기"><svg><use href="#i-x"/></svg></button>
-  </div>
-  <div class="mintro">
-    <p class="kicker">개인 프로젝트, 시뮬레이션 검증</p>
-    <p class="lead">바람, 파도, 해류 예보를 반영해 도착 기한을 지키면서 연료를 가장 적게 쓰는 항로와 속력을 함께 찾는 엔진</p>
-    <div class="mlinks"><a class="lbtn" href="https://github.com/JiwonXD/OptimalShipRouting" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg>Repo</a></div>
-  </div>
-  <img class="mshot" src="assets/shots/route.jpg" alt="선박 최적 항로 탐색 결과 지도" loading="lazy">
-  <div class="minfo">
-    <div><h5>구현</h5><ul class="feat"><li>전 세계 바다를 격자로 나누고 육지가 걸친 칸만 잘게 쪼갬, 운하와 해협은 따로 연결</li><li>바람과 파도, 해류 예보를 선박 저항 모델에 넣어 구간마다 연료 소모를 계산</li><li>시간에 가격을 매겨 연료와 시간을 함께 줄이고, 그 가격을 조절해 도착 기한에 맞춤</li><li>새 예보가 나올 때마다 남은 항로를 다시 계획하는 항해 시뮬레이션과 결과를 보여 주는 웹 화면</li></ul></div>
-    <div class="mine"><h5>일한 방식</h5><ul><li><b>시작</b>단순한 버전을 실제 항로 7개로 먼저 실행</li><li><b>측정</b>문제를 수치로 재고 같은 실험으로 전후 비교</li><li><b>기준</b>합격 기준은 결과를 보기 전에 기록</li><li><b>검증</b>논문 예제, 정답이 있는 문제, 독립 날씨 자료와 대조</li></ul></div>
-  </div>
-  <ul class="stack"><li>Python</li><li>Numba</li><li>NumPy</li><li>Dijkstra</li><li>Lazy Theta*</li><li>동적 계획법</li></ul>
-  <h4 class="mcases">문제 해결</h4>
-  <div class="cases">
-    <section class="case">
-      <h4>55분 걸리던 2만 km 항로 계획</h4>
-      <dl>
-        <dt>원인</dt><dd>단계별 측정 결과 속력 다시 고르기 65%, 탐색 27%. 코어 1개만 사용</dd>
-        <dt>해결</dt><dd>결과가 한 자리도 바뀌지 않는 조건으로 Numba 병렬화, 탐색을 컴파일된 루프로</dd>
-        <dt>결과</dt><dd><em>2,894초 → 315초</em>, 30개 항해 결과 0.01 t 안에서 동일</dd>
-      </dl>
-    </section>
-    <section class="case">
-      <h4>처음 나온 절감률 2.40%를 믿을 수 있는가</h4>
-      <dl>
-        <dt>원인</dt><dd>계획과 평가에 같은 예보 사용, 도착 시각 불일치, 비교 기준인 최단 경로가 83km 김</dd>
-        <dt>해결</dt><dd>도착 시각을 맞추고 계획에 쓰지 않은 날씨로 평가, 기준선 탐색 교체</dd>
-        <dt>결과</dt><dd><em>1회 계획 +0.28%, 매일 재계획 +0.98%</em> (여름 30개 항해, 시뮬레이션)</dd>
       </dl>
     </section>
   </div>
